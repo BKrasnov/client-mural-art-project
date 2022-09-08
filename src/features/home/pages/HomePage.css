@@ -1,0 +1,22 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: #000133;
+}
+  
+.container {
+  display: flex;
+  flex: 1;
+}
+
+.drawer {
+  background: #d8dcd6;
+  width:   240px;
+}
+
+.main {
+  flex: 1;
+  background: #f7f5f5;
+}
