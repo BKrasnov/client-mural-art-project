@@ -1,0 +1,11 @@
+.icon {
+  padding: 10px;
+}
+
+.icon:hover {
+  cursor: pointer;
+}
+
+.header-title {
+  margin: auto;
+}
