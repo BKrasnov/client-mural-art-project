@@ -1,0 +1,13 @@
+:root {
+  /* General */
+  --primary-color: #a9a9a9;
+  --primary-contrast-color: #7F7F7F;
+  /* --primary-dark-color: #639; */
+  --primary-light-contrast-color: white;
+  --primary-dark-contrast-color: black;
+  /* --accent-light-color: #c9f; */
+  --font-size-xl: 1rem;
+
+  /* Pagination */
+  --pagination-button-active-color: #4f10ad;
+}
