@@ -18,5 +18,5 @@
 
 .main {
   flex: 1;
-  background: #f7f5f5;
+  background: var(--primary-light-contrast-color);
 }
