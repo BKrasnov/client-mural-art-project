@@ -7,15 +7,14 @@ import { RootRouter } from './core/routes/RootRouter';
 
 import './theme/index.css';
 
-/** Replace "Brr... gere should..." on "<ErrorSite>" */
+import { Loader } from './components/Loader';
+
 export const App: FC = () => (
   <Provider store={store}>
     <HashRouter>
-      <div>
-        <Suspense fallback={<div>Brrr... here should be your loader component</div>}>
+        <Suspense fallback={<Loader/>}>
           <RootRouter />
         </Suspense>
-      </div>
     </HashRouter>
   </Provider>
 );
