@@ -1,9 +1,16 @@
 .header,
 .footer {
   display: flex;
-  background: #00022e;
-  height: 50px;
+  background: var(--secondary-color);
+  min-height: 30px;
   align-items: center;
   justify-content: center;
-  color: #fc86aa;
+  color: var(--secondary-contrast-color);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  min-height: 100vh;
 }

@@ -1,13 +1,15 @@
 :root {
   /* General */
   --primary-color: #a9a9a9;
-  --primary-contrast-color: #7F7F7F;
-  /* --primary-dark-color: #639; */
-  --primary-light-contrast-color: #D4D4D4;
-  --primary-dark-contrast-color: black;
-  /* --accent-light-color: #c9f; */
-  --font-size-xl: 1rem;
+  --primary-dark-color: #7F7F7F;
+  --primary-contrast-color: #D4D4D4;
 
-  /* Pagination */
-  --pagination-button-active-color: #4f10ad;
+  --secondary-color: #2b2b2b;
+  --secondary-dark-color: #1C0E0E;
+  --secondary-contrast-color: white;
+
+  /* Font size */
+  --font-size-xl: 1.2rem;
+  --font-size-l: 1rem;
+  --font-size-m: 0.8rem;
 }
