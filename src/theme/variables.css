@@ -1,0 +1,15 @@
+:root {
+  /* General */
+  --primary-color: #a9a9a9;
+  --primary-dark-color: #7F7F7F;
+  --primary-contrast-color: #D4D4D4;
+
+  --secondary-color: #2b2b2b;
+  --secondary-dark-color: #1C0E0E;
+  --secondary-contrast-color: white;
+
+  /* Font size */
+  --font-size-xl: 1.2rem;
+  --font-size-l: 1rem;
+  --font-size-m: 0.8rem;
+}

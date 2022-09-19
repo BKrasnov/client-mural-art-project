@@ -1,12 +1,22 @@
-import React from 'react';
+import { FC, Suspense } from "react";
+import { Provider } from "react-redux";
+import { HashRouter } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-      </header>
-    </div>
-  );
-}
+import { store } from "./core/store";
+import { RootRouter } from "./core/routes/RootRouter";
 
-export default App;
+import "./theme/index.css";
+
+import { Loader } from "./components/Loader";
+
+export const App: FC = () => (
+  <div className="wrapper">
+    <Provider store={store}>
+      <HashRouter>
+        <Suspense fallback={<Loader />}>
+          <RootRouter />
+        </Suspense>
+      </HashRouter>
+    </Provider>
+  </div>
+);
