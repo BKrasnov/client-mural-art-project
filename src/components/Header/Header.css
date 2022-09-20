@@ -1,0 +1,34 @@
+.header {
+  /* position: fixed; */
+  width: 100%;
+}
+
+.header__panel {
+  background: var(--secondary-color);
+  padding: 10px 20px;
+  color: var(--secondary-contrast-color);
+}
+
+.header__line {
+  text-align: center;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  background: var(--primary-color);
+  padding: 0 20px;
+}
+
+.header__logo {
+  min-height: 40px;
+  max-width: 120px;
+  vertical-align: middle;
+}
+
+.menu__item {
+  display: inline-block;
+  padding: 0 20px;
+}
