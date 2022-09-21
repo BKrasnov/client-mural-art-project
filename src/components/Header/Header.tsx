@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 
-import { HeaderLine } from "./components/HeaderLine";
 import { HeaderPanel } from "./components/HeaderPanel";
+import { HeaderLine } from "./components/HeaderLine";
 
 import "./Header.css";
 
