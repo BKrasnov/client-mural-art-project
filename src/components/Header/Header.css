@@ -5,10 +5,18 @@
 
 .header__panel {
   background: var(--secondary-color);
-  padding: 10px 20px;
   color: var(--secondary-contrast-color);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-around;
 }
 
+.header__social {
+  display: flex;
+  justify-content: space-around;
+  min-width: 80px;
+}
+ 
 .header__line {
   text-align: center;
 }

@@ -23,7 +23,6 @@ const HeaderLineComponent: FC = () => {
             <li className="menu__item">{item}</li>
           ))}
         </ul>
-        <div>Authorization</div>
       </div>
     </div>
   );
