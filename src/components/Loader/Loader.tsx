@@ -1,9 +1,7 @@
 import { FC, memo } from "react";
 
-import { CircularProgress } from "@mui/material";
-
 const LoaderComponent: FC = () => {
-  return <CircularProgress color="secondary" />;
+  return <div>Loading...</div>
 };
 
 export const Loader = memo(LoaderComponent);
