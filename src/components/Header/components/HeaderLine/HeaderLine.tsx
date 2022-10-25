@@ -9,7 +9,7 @@ const HEADER_ITEM = {
   menu: "header__menu",
 };
 
-const menuItem = ["Events", "Murals", "For Painters", "Contacts"];
+const menuItem = ["News", "Murals", "For Painters", "Contacts"];
 
 const HeaderLineComponent: FC = () => {
   return (
