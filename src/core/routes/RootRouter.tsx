@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Navigate, RouteObject, useRoutes } from 'react-router-dom';
 
+import { personalAreaRoutes } from '../../features/personal-area/routes';
 import { homeRoutes } from '../../features/home/routes';
 import { muralRoutes } from '../../features/mural/routes';
 
@@ -12,6 +13,7 @@ const routes: RouteObject[] = [
   },
   ...homeRoutes,
   ...muralRoutes,
+  ...personalAreaRoutes,
 ];
 
 /** Root router component. */
