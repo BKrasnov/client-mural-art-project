@@ -6,7 +6,7 @@ html {
 body {
   margin: 0;
   font-size: var(--font-size-xl);
-  background: var(--background-color);
+  background: var(--primary-contrast-color);
 }
 
 a {
