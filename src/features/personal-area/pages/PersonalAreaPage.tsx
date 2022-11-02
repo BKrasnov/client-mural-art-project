@@ -1,8 +1,9 @@
 import { FC, memo } from 'react';
+import { Outlet } from 'react-router-dom';
 
 const PersonalAreaPageComponent: FC = () => (
   <>
-    <div>personal area</div>
+    <Outlet />
   </>
 );
 

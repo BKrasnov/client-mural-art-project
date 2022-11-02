@@ -1,0 +1,1 @@
+export { PersonalAreaPage } from "./PersonalAreaPage";
