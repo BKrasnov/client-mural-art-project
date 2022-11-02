@@ -72,7 +72,7 @@ function getAdditionalModulePaths(options = {}) {
   return Object.assign({}, resultAlias,
           Object.keys(options.paths).reduce(
               (obj, alias) => {
-                  obj[  (alias)] = 
+                  obj[removeWildcardPart(alias)] = 
                     options.paths[alias].map(removeWildcardPart)[0]
                   return obj
               }, {}
