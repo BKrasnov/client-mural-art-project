@@ -10,13 +10,11 @@ import "./theme/index.css";
 import { Loader } from "./components/Loader";
 
 export const App: FC = () => (
-  <div className="wrapper">
-    <Provider store={store}>
-      <HashRouter>
-        <Suspense fallback={<Loader />}>
-          <RootRouter />
-        </Suspense>
-      </HashRouter>
-    </Provider>
-  </div>
+  <Provider store={store}>
+    <HashRouter>
+      <Suspense fallback={<Loader />}>
+        <RootRouter />
+      </Suspense>
+    </HashRouter>
+  </Provider>
 );
