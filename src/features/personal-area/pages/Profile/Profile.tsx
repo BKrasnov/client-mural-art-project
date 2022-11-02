@@ -1,10 +1,9 @@
 import { FC, memo } from "react";
 
+import styles from "./Profile.module.css"
 
 const ProfileComponent: FC = () => (
-  <div>
-    profile
-  </div>
+  <h1>hel123lo</h1>
 );
 
 export const Profile = memo(ProfileComponent);

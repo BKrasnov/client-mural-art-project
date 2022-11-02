@@ -1,9 +1,9 @@
 import { lazy } from "react";
 import { RouteObject } from "react-router-dom";
-import { Profile } from "./components/Profile";
+import { Profile } from "./pages/Profile";
 
 const PersonalAreaPage = lazy(() =>
-  import("./pages/PersonalAreaPage").then((module) => ({ default: module.PersonalAreaPage }))
+  import("./pages/PersonalAreaShared/PersonalAreaPage").then((module) => ({ default: module.PersonalAreaPage }))
 );
 
 
