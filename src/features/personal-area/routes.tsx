@@ -3,7 +3,7 @@ import { RouteObject } from "react-router-dom";
 import { Profile } from "./pages/Profile";
 
 const PersonalAreaPage = lazy(() =>
-  import("./pages/PersonalAreaShared/PersonalAreaPage").then((module) => ({ default: module.PersonalAreaPage }))
+  import("./pages/PersonalAreaPage").then((module) => ({ default: module.PersonalAreaPage }))
 );
 
 

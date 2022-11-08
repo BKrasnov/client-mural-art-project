@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom";
 
 import styles from "./PersonalAreaPage.module.css";
 
-import { TitleBox } from "../../components/TitleBox";
+import { TitleBox } from "../components/TitleBox";
 
 const PersonalAreaPageComponent: FC = () => (
   <>
