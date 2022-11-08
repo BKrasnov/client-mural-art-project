@@ -3,7 +3,6 @@ import { Navigate, RouteObject, useRoutes } from 'react-router-dom';
 
 import { personalAreaRoutes } from '../../features/personal-area/routes';
 import { homeRoutes } from '../../features/home/routes';
-import { muralRoutes } from '../../features/mural/routes';
 
 
 const routes: RouteObject[] = [
@@ -12,7 +11,6 @@ const routes: RouteObject[] = [
     element: <Navigate to="/" />,
   },
   ...homeRoutes,
-  ...muralRoutes,
   ...personalAreaRoutes,
 ];
 
