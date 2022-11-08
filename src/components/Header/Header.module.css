@@ -1,42 +1,22 @@
 .header {
-  /* position: fixed; */
-  width: 100%;
+  width: 100%; 
+
 }
 
-.header__panel {
-  background: var(--secondary-color);
-  color: var(--secondary-contrast-color);
-  padding: 10px 20px;
+.header__list {
   display: flex;
-  justify-content: space-around;
-}
-
-.header__social {
-  display: flex;
-  justify-content: space-around;
-  min-width: 80px;
-}
- 
-.header__line {
-  text-align: center;
-}
-
-.header__container {
-  display: flex;
-  justify-content: space-between;
+  justify-content: end;
   align-items: center;
-  height: 60px;
-  background: var(--primary-color);
-  padding: 0 20px;
-}
-
-.header__logo {
-  min-height: 40px;
-  max-width: 120px;
-  vertical-align: middle;
+  min-height: 120px;
+  padding: 0 40px;
+  gap: 70px;
 }
 
 .menu__item {
   display: inline-block;
   padding: 0 20px;
+}
+
+.header__textName {
+  color: black;
 }
