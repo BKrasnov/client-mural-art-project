@@ -2,7 +2,7 @@ import { FC, memo } from "react";
 
 import { Footer } from "../../../components/Footer";
 import { Header } from "../../../components/Header";
-import { Home } from "../componets";
+import { Home } from "./Home";
 
 const HomePageComponent: FC = () => (
   <>
