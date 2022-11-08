@@ -1,0 +1,38 @@
+.sidebar {
+    min-width: 300px;
+    min-height: 100vh;  
+    background-color: #330099;
+  }
+  
+  .sidebar__menu {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 0px;
+    margin: 0px;
+  }
+  
+  .sidebar__link {
+    margin: 7px 0;
+  }
+  
+  .sidebar__button {
+    color: white;
+    text-align: start;
+    padding: 20px 8px 20px 100px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    transition: 0.4s;
+  }
+  
+  .sidebar__button:hover {
+    background: rgba(0, 0, 0, 0.2);
+  }
+  
+  .logo {
+    display: block;
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+  }
+  

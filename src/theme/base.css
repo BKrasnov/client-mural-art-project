@@ -1,9 +1,20 @@
-html {
+body {
+  font-family: 'Fira Sans', sans-serif;
+  margin: 0;
+  padding: 0;
   font-size: var(--font-size-xl);
-  font-family: system-ui, sans-serif;
+  background: var(--primary-contrast-color);
 }
 
-body {
-  margin: 0;
-  font-size: var(--font-size-xl);
+a {
+  text-decoration: none;
+  color: white !important;
+}
+
+li {
+  list-style-type: none;
+}
+
+button {
+  font: inherit;
 }

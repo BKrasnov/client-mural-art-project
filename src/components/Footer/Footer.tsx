@@ -1,12 +1,12 @@
 import { FC, memo } from "react";
 
-import "./Footer.css";
+import styles from "./Footer.module.css";
 
 
 const FooterComponent: FC = () => {
 
   return (
-    <footer className="footer">
+    <footer className={styles.footer}>
       Footer
     </footer>
   );

@@ -1,0 +1,9 @@
+.main {
+  flex: 1;
+}
+
+.main__image {
+  min-width: 1440px;
+  height: 715px;
+  background: url(@static/muralHomeImage.png);
+}
