@@ -3,6 +3,7 @@ import { Navigate, RouteObject, useRoutes } from 'react-router-dom';
 
 import { personalAreaRoutes } from '../../features/personal-area/routes';
 import { homeRoutes } from '../../features/home/routes';
+import { authRoutes } from 'src/features/auth/routes';
 
 
 const routes: RouteObject[] = [
@@ -11,7 +12,8 @@ const routes: RouteObject[] = [
     element: <Navigate to="/" />,
   },
   ...homeRoutes,
-  ...personalAreaRoutes,
+  ...authRoutes,
+  ...personalAreaRoutes
 ];
 
 /** Root router component. */
