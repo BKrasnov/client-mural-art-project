@@ -1,5 +1,6 @@
 import { lazy } from "react";
 import { Navigate, RouteObject } from "react-router-dom";
+import { LoginForm } from "./components/LoginForm";
 
 import { RegistrarionForm } from "./components/RegisterForm/RegisterForm";
 
@@ -16,7 +17,7 @@ export const authRoutes: RouteObject[] = [
       },
       {
         path: "login",
-        // element: <LoginPage />,
+        element: <LoginForm />,
       },
       {
         path: "*",
