@@ -1,21 +1,28 @@
+import { AuthGuard } from "@core/routes/guards/AuthGuard";
 import { lazy } from "react";
-import { RouteObject } from "react-router-dom";
+import { Navigate, RouteObject } from "react-router-dom";
 import { Profile } from "./pages/Profile";
 
-const PersonalAreaPage = lazy(() =>
-  import("./pages/PersonalAreaPage").then((module) => ({ default: module.PersonalAreaPage }))
-);
-
+const PersonalAreaPage = lazy(() => import("./pages/PersonalAreaPage").then(module => ({ default: module.PersonalAreaPage })));
 
 export const personalAreaRoutes: RouteObject[] = [
   {
-    path: "personal-area",
-    element: <PersonalAreaPage />,
+    element: <AuthGuard />,
     children: [
       {
-        path: "profile",
-        element: <Profile />,
-      }
-    ]
+        path: "personal-area",
+        element: <PersonalAreaPage />,
+        children: [
+          {
+            path: "profile",
+            element: <Profile />,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: "*",
+    element: <Navigate to="personal-area/profile" />,
   },
 ];

@@ -6,6 +6,7 @@ export class User extends Immerable {
   public readonly id: string;
 
   /** User email. */
+  /** Email of the user. Can be null since Firebase user doesn't necessarily contain an email. */
   public readonly email: string | null;
 
   /** Nick name user. */
