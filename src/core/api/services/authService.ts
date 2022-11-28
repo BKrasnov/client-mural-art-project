@@ -36,20 +36,16 @@ export namespace AuthService {
     try {
       const userCredential = await signInWithEmailAndPassword(FirebaseService.auth, email, password);
       const accessToken = await userCredential.user.getIdToken();
+
+      // Fix this.
       const token = {
         access: accessToken,
         refresh: userCredential.user.refreshToken,
       } as Token;
-
       await TokenService.save(token);
-
       return token;
     } catch (error) {
       throw error;
     }
-
-    //   const token = TokenDataMapper.fromDto(data);
-    //   TokenService.setToken(token);
-    //   return UserService.getUser();
   }
 }
