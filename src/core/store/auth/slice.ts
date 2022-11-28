@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { authLogin, authLogout, authRegister } from "./dispatchers";
+import { authLogin, authLogout, authRegister, getUserFromCache } from "./dispatchers";
 import { initialState } from "./state";
 
 const authSlice = createSlice({
@@ -14,7 +14,7 @@ const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(authLogin.fulfilled, (state, action) => {
-        state.token = action.payload;
+        state.user = action.payload;
         state.isLoading = false;
         state.isLoggedIn = true;
       })
@@ -37,8 +37,17 @@ const authSlice = createSlice({
       })
 
       .addCase(authLogout.pending, state => {
+        state.user = null;
         state.error = undefined;
         state.isLoading = true;
+      })
+
+      .addCase(getUserFromCache.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(getUserFromCache.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoading = false;
       }),
 });
 

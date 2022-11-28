@@ -26,3 +26,8 @@ export const authLogout = createAsyncThunk("auth/logout", async () => {
     throw error;
   }
 });
+
+export const getUserFromCache = createAsyncThunk(
+  'auth/subscribeToAuthStatus',
+  async () => UserService.getUser(),
+);
