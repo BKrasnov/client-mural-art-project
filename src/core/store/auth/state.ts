@@ -1,4 +1,4 @@
-import { Token } from '@core/models';
+import { User } from '@core/models';
 
 /** Auth state. */
 export interface AuthState {
@@ -12,13 +12,13 @@ export interface AuthState {
   /** Is logged in user. */
   readonly isLoggedIn: boolean;
 
-  /** Whether user is logged in or not. */
-  readonly token: Token | null;
+  /** Currently signed in user. */
+  readonly user: User | null;
 }
 
 export const initialState: AuthState = {
   isLoading: false,
   isLoggedIn: false,
   error: undefined,
-  token: null,
+  user: null,
 };
