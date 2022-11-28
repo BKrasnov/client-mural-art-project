@@ -1,8 +1,9 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-
-import { Registration, Login, User, Token } from "@core/models";
+import { Registration, Login, Token } from "@core/models";
+import { UserMapper } from "@core/api/mappers";
 
 import { UserService, FirebaseService, TokenService } from "./index";
+
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 export namespace AuthService {
   /**
@@ -15,16 +16,11 @@ export namespace AuthService {
     const { email, password } = registrationData;
     try {
       const userCredential = await createUserWithEmailAndPassword(FirebaseService.auth, email, password);
-
-      /** Adding mapper dto. */
-      await UserService.addUser({
-        id: userCredential.user?.uid,
-        email: userCredential.user?.email,
-      } as User);
+      const user = UserMapper.fromDto(userCredential);
+      await UserService.addUser(user);
     } catch (error) {
       throw error;
     }
-    console.log("User created");
   }
 
   /**
@@ -37,11 +33,11 @@ export namespace AuthService {
       const userCredential = await signInWithEmailAndPassword(FirebaseService.auth, email, password);
       const accessToken = await userCredential.user.getIdToken();
 
-      // Fix this.
-      const token = {
+      const token = new Token({
         access: accessToken,
         refresh: userCredential.user.refreshToken,
-      } as Token;
+      });
+
       await TokenService.save(token);
       return token;
     } catch (error) {
