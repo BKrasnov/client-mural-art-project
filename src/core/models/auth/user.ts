@@ -8,17 +8,23 @@ export class User extends Immerable {
   /** User email. */
   public readonly email: string | null;
 
-  /** First name. */
-  public readonly firstName?: string;
-
   /** Nick name user. */
-  public readonly nickName?: string;
+  public readonly nickName: string | null;
+
+  /** First name. */
+  public readonly firstName: string | null;
 
   /** Last name. */
-  public readonly lastName?: string;
+  public readonly lastName: string | null;
 
   /** URL to avatar image. */
-  public readonly avatar?: string;
+  public readonly avatar: string | null;
+
+  /** User phone number */
+  public readonly phoneNumber: string | null;
+
+  /** User email verified. */
+  public readonly emailVerified: boolean;
 
   public constructor(data: InitArgsUser) {
     super();
@@ -28,6 +34,8 @@ export class User extends Immerable {
     this.firstName = data.firstName;
     this.lastName = data.lastName;
     this.avatar = data.avatar;
+    this.phoneNumber = data.phoneNumber;
+    this.emailVerified = data.emailVerified;
   }
 }
 
