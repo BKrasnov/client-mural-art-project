@@ -3,7 +3,7 @@ import { memo, FC, useState, ChangeEvent } from "react";
 import { Login } from "@core/models";
 
 import { useAppDispatch } from "@core/store";
-import { authLogin } from "@core/store/auth/dispatchers";
+import { authLogin, authLogout } from "@core/store/auth/dispatchers";
 
 // import { initValues, loginFormSchema, LoginFormValue } from './formSettings';
 
@@ -34,6 +34,10 @@ const LoginFormComponent: FC = () => {
     dispatch(authLogin(loginData));
   };
 
+  const handleUserLogout = () => {
+    dispatch(authLogout());
+  };
+
   return (
     <>
       LoginForm
@@ -48,6 +52,13 @@ const LoginFormComponent: FC = () => {
         }}
       >
         login
+      </button>
+      <button
+        onClick={() => {
+          handleUserLogout();
+        }}
+      >
+        logout
       </button>
     </>
   );
