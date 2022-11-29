@@ -1,65 +1,54 @@
-import { memo, FC, useState, ChangeEvent } from "react";
+import { memo, FC } from "react";
 
-import { Login } from "@core/models";
+import { useAppDispatch, useAppSelector } from "@core/store";
+import { authLogin } from "@core/store/auth/dispatchers";
+import { selectError, selectIsAuthLoading } from "@core/store/auth/selectors";
 
-import { useAppDispatch } from "@core/store";
-import { authLogin, authLogout } from "@core/store/auth/dispatchers";
+import { initialFormValues, LoginSchema, LoginFormValue } from "./formSettings";
+import { Field, FormikProvider, useFormik } from "formik";
 
-// import { initValues, loginFormSchema, LoginFormValue } from './formSettings';
+import { TextField } from "formik-mui";
+import { FormHelperText } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
 
-const INITIAL_USER: Login = {
-  email: "",
-  password: "",
-};
+import styles from "./LoginForm.module.css";
 
 const LoginFormComponent: FC = () => {
-  const [userData, setUserData] = useState(INITIAL_USER);
-
-  /**
-   * Handle input change.
-   * @todo Fix code style.
-   * @param event
-   */
-  const handleInputs = (event: ChangeEvent<HTMLInputElement>) => {
-    const inputs = { [event.target.name]: event.target.value };
-
-    setUserData({ ...userData, ...inputs });
-  };
   const dispatch = useAppDispatch();
 
-  // const isLoading = useAppSelector(selectUserLoading);
-  // const loginError = useAppSelector(selectUserError);
+  const isLoading = useAppSelector(selectIsAuthLoading);
+  const loginError = useAppSelector(selectError);
 
-  const handleUserLogin = (loginData: Login) => {
+  /**
+   * Handles form submit.
+   * @param loginData Login data.
+   */
+  const handleSubmitUserLogin = (loginData: LoginFormValue) => {
+    console.log(loginData);
     dispatch(authLogin(loginData));
+    formik.setSubmitting(false);
   };
 
-  const handleUserLogout = () => {
-    dispatch(authLogout());
-  };
+  const formik = useFormik({
+    initialValues: initialFormValues,
+    validationSchema: LoginSchema,
+    onSubmit: handleSubmitUserLogin,
+  });
 
   return (
     <>
-      LoginForm
-      <input placeholder="Email" name="email" type="email" onChange={event => handleInputs(event)} />
-      <input placeholder="Password" name="password" type="password" onChange={event => handleInputs(event)} />
-      <button
-        onClick={() => {
-          handleUserLogin({
-            email: userData.email,
-            password: userData.password,
-          });
-        }}
-      >
-        login
-      </button>
-      <button
-        onClick={() => {
-          handleUserLogout();
-        }}
-      >
-        logout
-      </button>
+      <div className={styles.wrapper}>
+        <FormikProvider value={formik}>
+          <form onSubmit={formik.handleSubmit}>
+            <Field component={TextField} name="email" label="Email" type="email" required />
+            <Field component={TextField} name="password" label="Password" type="password" required />
+            <FormHelperText error>{loginError}</FormHelperText>
+            <LoadingButton loading={isLoading} loadingIndicator="Loading…" type="submit">
+              Login
+            </LoadingButton>
+          </form>
+        </FormikProvider>
+      </div>
     </>
   );
 };
