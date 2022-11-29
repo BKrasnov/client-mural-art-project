@@ -7,7 +7,7 @@ import { selectIsAuth } from "@core/store/auth/selectors";
 const NonAuthGuardComponent = () => {
   const isAuthUser = useAppSelector(selectIsAuth);
   if (isAuthUser) {
-    return <Navigate to="/" />;
+    return <Navigate to="/personal-area/profile" />;
   }
   return <Outlet />;
 };
