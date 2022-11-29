@@ -1,55 +1,58 @@
-import { ChangeEvent, FC, memo, useState } from "react";
+import { memo, FC } from "react";
+import { Link } from "react-router-dom";
 
-import { useAppDispatch } from "@core/store";
+import { useAppDispatch, useAppSelector } from "@core/store";
 import { authRegister } from "@core/store/auth/dispatchers";
+import { selectError, selectIsAuthLoading } from "@core/store/auth/selectors";
 
-import { Registration } from "@core/models";
+import { initialFormValues, RegisterSchema, RegistrationFormValue } from "./formSettings";
+import { Field, FormikProvider, useFormik } from "formik";
 
-const INITIAL_USER: Registration = {
-  email: '',
-  password: '',
-};
+import { FormHelperText } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
 
-const RegistrarionFormComponent: FC = () => {
-  const [userData, setUserData] = useState(INITIAL_USER);
+import styles from "./RegistrationForm.module.css";
 
-  /**
-   * Handle input change.
-   * @todo Fix code style.
-   * @param event
-   */
-  const handleInputs = (event: ChangeEvent<HTMLInputElement>) => {
-    const inputs = { [event.target.name]: event.target.value };
-
-    setUserData({ ...userData, ...inputs });
-  };
-
+const RegisterFormComponent: FC = () => {
   const dispatch = useAppDispatch();
 
-  // const isLoading = useAppSelector(selectUserLoading);
-  // const registrationError = useAppSelector(selectUserError);
+  const isLoading = useAppSelector(selectIsAuthLoading);
+  const loginError = useAppSelector(selectError);
 
-  const handleUserRegister = (registerData: Registration) => {
+  /**
+   * Handles form submit.
+   * @param registerData Login data.
+   */
+  const handleSubmitUserLogin = (registerData: RegistrationFormValue) => {
+    console.log(registerData);
     dispatch(authRegister(registerData));
+    formik.setSubmitting(false);
   };
+
+  const formik = useFormik({
+    initialValues: initialFormValues,
+    validationSchema: RegisterSchema,
+    onSubmit: handleSubmitUserLogin,
+  });
 
   return (
     <>
-      Registrarion
-      <input placeholder="Email" name="email" type="email" onChange={event => handleInputs(event)} />
-      <input placeholder="Password" name="password" type="password" onChange={event => handleInputs(event)} />
-      <button
-        onClick={() => {
-          handleUserRegister({
-            email: userData.email,
-            password: userData.password,
-          });
-        }}
-      >
-        register
-      </button>
+      <div className={styles.wrapper}>
+        <h2>Регистрация пользователя</h2>
+        <FormikProvider value={formik}>
+          <form onSubmit={formik.handleSubmit} className={styles.registerForm}>
+            <Field className={styles.registerForm__input} name="email" placeholder="Почта" label="Email" type="email" required />
+            <Field className={styles.registerForm__input} name="password" placeholder="Пароль" label="Password" type="password" required />
+            <FormHelperText error>{loginError}</FormHelperText>
+            <LoadingButton loading={isLoading} loadingIndicator="Loading…" type="submit">
+              Login
+            </LoadingButton>
+          </form>
+        </FormikProvider>
+        <Link to="/auth/login">Есть аккаунт? Войти</Link>
+      </div>
     </>
   );
 };
 
-export const RegistrarionForm = memo(RegistrarionFormComponent);
+export const RegistrarionForm = memo(RegisterFormComponent);
