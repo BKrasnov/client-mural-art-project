@@ -1,4 +1,5 @@
 import { memo, FC } from "react";
+import { Link } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "@core/store";
 import { authLogin } from "@core/store/auth/dispatchers";
@@ -7,7 +8,6 @@ import { selectError, selectIsAuthLoading } from "@core/store/auth/selectors";
 import { initialFormValues, LoginSchema, LoginFormValue } from "./formSettings";
 import { Field, FormikProvider, useFormik } from "formik";
 
-import { TextField } from "formik-mui";
 import { FormHelperText } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 
@@ -38,16 +38,18 @@ const LoginFormComponent: FC = () => {
   return (
     <>
       <div className={styles.wrapper}>
+        <h2>Авторизация пользователя</h2>
         <FormikProvider value={formik}>
-          <form onSubmit={formik.handleSubmit}>
-            <Field component={TextField} name="email" label="Email" type="email" required />
-            <Field component={TextField} name="password" label="Password" type="password" required />
+          <form onSubmit={formik.handleSubmit} className={styles.loginForm}>
+            <Field className={styles.loginForm__input} name="email" placeholder="Почта" label="Email" type="email" required />
+            <Field className={styles.loginForm__input} name="password" placeholder="Пароль" label="Password" type="password" required />
             <FormHelperText error>{loginError}</FormHelperText>
             <LoadingButton loading={isLoading} loadingIndicator="Loading…" type="submit">
               Login
             </LoadingButton>
           </form>
         </FormikProvider>
+        <Link to="/auth/registration">Нет аккаунта? Регистрация</Link>
       </div>
     </>
   );
