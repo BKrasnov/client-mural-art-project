@@ -10,36 +10,34 @@ const authSlice = createSlice({
   extraReducers: builder =>
     builder
       .addCase(authLogin.pending, state => {
-        state.error = undefined;
         state.isLoading = true;
       })
       .addCase(authLogin.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoading = false;
-        state.isLoggedIn = true;
       })
       .addCase(authLogin.rejected, (state, action) => {
-        state.error = action.error.message;
+        state.loginError = action.error.message;
         state.isLoading = false;
-        state.isLoggedIn = false;
       })
 
       .addCase(authRegister.pending, state => {
-        state.error = undefined;
         state.isLoading = true;
       })
-      .addCase(authRegister.fulfilled, (state, action) => {
+      .addCase(authRegister.fulfilled, state => {
         state.isLoading = false;
       })
       .addCase(authRegister.rejected, (state, action) => {
-        state.error = action.error.message;
+        state.registerError = action.error.message;
         state.isLoading = false;
       })
 
       .addCase(authLogout.pending, state => {
-        state.user = null;
-        state.error = undefined;
         state.isLoading = true;
+      })
+      .addCase(authLogout.fulfilled, state => {
+        state.user = null;
+        state.isLoading = false;
       })
 
       .addCase(getUserFromCache.pending, state => {

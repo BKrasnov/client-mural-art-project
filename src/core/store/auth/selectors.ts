@@ -15,7 +15,13 @@ export const selectIsAuthLoading = createSelector(
 );
 
 /** Selects auth error state. */
-export const selectError = createSelector(
-  (state: RootState) => state.auth.error,
+export const selectLoginError = createSelector(
+  (state: RootState) => state.auth.loginError,
+  error => error
+);
+
+/** Selects auth error state. */
+export const selectRegisterError = createSelector(
+  (state: RootState) => state.auth.registerError,
   error => error
 );

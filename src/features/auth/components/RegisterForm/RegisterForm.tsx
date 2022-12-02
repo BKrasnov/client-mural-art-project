@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "@core/store";
 import { authRegister } from "@core/store/auth/dispatchers";
-import { selectError, selectIsAuthLoading } from "@core/store/auth/selectors";
+import { selectIsAuthLoading, selectRegisterError } from "@core/store/auth/selectors";
 
 import { initialFormValues, RegisterSchema, RegistrationFormValue } from "./formSettings";
 import { Field, FormikProvider, useFormik } from "formik";
@@ -17,15 +17,14 @@ const RegisterFormComponent: FC = () => {
   const dispatch = useAppDispatch();
 
   const isLoading = useAppSelector(selectIsAuthLoading);
-  const loginError = useAppSelector(selectError);
+  const registerError = useAppSelector(selectRegisterError);
 
   /**
    * Handles form submit.
    * @param registerData Login data.
    */
-  const handleSubmitUserLogin = (registerData: RegistrationFormValue) => {
-    console.log(registerData);
-    dispatch(authRegister(registerData));
+  const handleSubmitUserLogin = async (registerData: RegistrationFormValue) => {
+    await dispatch(authRegister(registerData));
     formik.setSubmitting(false);
   };
 
@@ -43,9 +42,9 @@ const RegisterFormComponent: FC = () => {
           <form onSubmit={formik.handleSubmit} className={styles.registerForm}>
             <Field className={styles.registerForm__input} name="email" placeholder="Почта" label="Email" type="email" required />
             <Field className={styles.registerForm__input} name="password" placeholder="Пароль" label="Password" type="password" required />
-            <FormHelperText error>{loginError}</FormHelperText>
+            <FormHelperText error>{registerError}</FormHelperText>
             <LoadingButton loading={isLoading} loadingIndicator="Loading…" type="submit">
-              Login
+              Регистрация
             </LoadingButton>
           </form>
         </FormikProvider>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "@core/store";
 import { authLogin } from "@core/store/auth/dispatchers";
-import { selectError, selectIsAuthLoading } from "@core/store/auth/selectors";
+import { selectLoginError, selectIsAuthLoading } from "@core/store/auth/selectors";
 
 import { initialFormValues, LoginSchema, LoginFormValue } from "./formSettings";
 import { Field, FormikProvider, useFormik } from "formik";
@@ -17,7 +17,7 @@ const LoginFormComponent: FC = () => {
   const dispatch = useAppDispatch();
 
   const isLoading = useAppSelector(selectIsAuthLoading);
-  const loginError = useAppSelector(selectError);
+  const loginError = useAppSelector(selectLoginError);
 
   /**
    * Handles form submit.
@@ -49,7 +49,9 @@ const LoginFormComponent: FC = () => {
             </LoadingButton>
           </form>
         </FormikProvider>
-        <Link to="/auth/registration">Нет аккаунта? Регистрация</Link>
+        <span>
+          Нет аккаунта?<Link to="/auth/registration"> Регистрация</Link>
+        </span>
       </div>
     </>
   );
