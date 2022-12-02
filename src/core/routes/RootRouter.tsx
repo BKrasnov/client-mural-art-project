@@ -1,17 +1,25 @@
-import { FC } from 'react';
-import { Navigate, RouteObject, useRoutes } from 'react-router-dom';
+import { FC } from "react";
+import { Navigate, RouteObject, useRoutes } from "react-router-dom";
 
-import { personalAreaRoutes } from '../../features/personal-area/routes';
-import { homeRoutes } from '../../features/home/routes';
+import { AuthStateProvider } from "@components/authStateProvider";
 
+import { personalAreaRoutes } from "src/features/personal-area/routes";
+import { homeRoutes } from "src/features/home/routes";
+import { authRoutes } from "src/features/auth/routes";
 
 const routes: RouteObject[] = [
   {
-    path: '*',
-    element: <Navigate to="/" />,
+    element: <AuthStateProvider />,
+    children: [
+      {
+        path: "*",
+        element: <Navigate to="/auth/sign-in" />,
+      },
+      ...homeRoutes,
+      ...authRoutes,
+      ...personalAreaRoutes,
+    ],
   },
-  ...homeRoutes,
-  ...personalAreaRoutes,
 ];
 
 /** Root router component. */

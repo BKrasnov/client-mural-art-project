@@ -1,20 +1,19 @@
-import { configureStore } from '@reduxjs/toolkit';
-import {
-  TypedUseSelectorHook, useDispatch, useSelector,
-} from 'react-redux';
+import { configureStore } from "@reduxjs/toolkit";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
-// import { animeSlice } from './anime/slice';
+import authReducer from "./auth/slice";
 
 export const store = configureStore({
   reducer: {
-    // auth: authSlice.reducer,
+    auth: authReducer,
   },
-  middleware: getDefaultMiddleware => getDefaultMiddleware({
-    // We need to disable this check to allow ES6 classes in Redux.
-    // You can find more info about this middleware in docs:
-    // https://redux-toolkit.js.org/api/serializabilityMiddleware
-    serializableCheck: false,
-  }),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      // We need to disable this check to allow ES6 classes in Redux.
+      // You can find more info about this middleware in docs:
+      // https://redux-toolkit.js.org/api/serializabilityMiddleware
+      serializableCheck: false,
+    }),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
