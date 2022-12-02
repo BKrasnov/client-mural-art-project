@@ -10,7 +10,6 @@
     display: flex;
     flex-direction: column;
     
-    border: 1px solid rgba(4, 0, 122, 0.397);
 }
 
 .loginForm__input {

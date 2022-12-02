@@ -48,7 +48,9 @@ const RegisterFormComponent: FC = () => {
             </LoadingButton>
           </form>
         </FormikProvider>
-        <Link to="/auth/login">Есть аккаунт? Войти</Link>
+        <span>
+          Есть аккаунт? <Link to="/auth/login"> Войти</Link>
+        </span>
       </div>
     </>
   );

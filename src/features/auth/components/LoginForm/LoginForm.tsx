@@ -50,7 +50,7 @@ const LoginFormComponent: FC = () => {
           </form>
         </FormikProvider>
         <span>
-          Нет аккаунта?<Link to="/auth/registration"> Регистрация</Link>
+          Нет аккаунта? <Link to="/auth/registration">Регистрация</Link>
         </span>
       </div>
     </>
