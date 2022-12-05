@@ -1,0 +1,17 @@
+.wrapperSettings {
+  display: grid;
+  border: 1px solid black;
+}
+
+.search {
+  margin: 0 0 10px 0;
+  border-radius: 10px;
+  border: 2px solid #6b6b6b;
+  padding: 10px 20px;
+}
+
+.sorting {
+  border-radius: 10px;
+  border: 2px solid #6b6b6b;
+  padding: 10px 20px;
+}
