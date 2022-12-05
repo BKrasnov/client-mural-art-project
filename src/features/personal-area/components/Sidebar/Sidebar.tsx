@@ -1,15 +1,16 @@
 import { FC, memo } from "react";
-
-import styles from "./Sidebar.module.css";
+import { Link } from "react-router-dom";
 
 import logotype from "@static/logotype.png";
 import { authLogout } from "@core/store/auth/dispatchers";
 import { useAppDispatch } from "@core/store";
 
+import styles from "./Sidebar.module.css";
+
 const menuItem = [
   {
     name: "Главная",
-    address: "#/personal-area/profile",
+    address: "personal-area/profile",
   },
   {
     name: "Подать заявку",
@@ -17,7 +18,7 @@ const menuItem = [
   },
   {
     name: "Галерея работ",
-    address: "/",
+    address: "/personal-area/gallery-murals",
   },
   {
     name: "Настройки",
@@ -41,12 +42,12 @@ const SidebarComponent: FC = () => {
       <ul className={styles.sidebar__menu}>
         {menuItem.map(item => {
           return (
-            <li className={styles.sidebar__link}>
-              <a href={item.address}>
+            <li key={item.name} className={styles.sidebar__link}>
+              <Link to={item.address}>
                 <button className={styles.sidebar__button}>
                   <span>{item.name}</span>
                 </button>
-              </a>
+              </Link>
             </li>
           );
         })}
