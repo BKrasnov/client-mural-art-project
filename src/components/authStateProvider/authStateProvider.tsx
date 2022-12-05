@@ -6,6 +6,8 @@ import { AppDispatch, useAppSelector } from "@core/store";
 import { getUserFromCache } from "@core/store/auth/dispatchers";
 import { selectIsAuthLoading } from "@core/store/auth/selectors";
 
+import { Loader } from "@components/Loader";
+
 const AuthStateProviderComponent = () => {
   const dispatch = useDispatch<AppDispatch>();
   const isLoading = useAppSelector(selectIsAuthLoading);
@@ -16,7 +18,7 @@ const AuthStateProviderComponent = () => {
 
   if(isLoading) {
     return (
-      <div>Loading...</div>
+      <Loader/>
     )
   }
 
