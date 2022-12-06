@@ -3,7 +3,8 @@
 }
 
 .wrapper {
-  border: 1px solid black;
   padding: 40px 60px;
   width: 100%;
+  background-image: url("https://clck.ru/32rdM4");
+  background-size: cover;
 }
