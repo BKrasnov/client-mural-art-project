@@ -2,7 +2,7 @@ import { FC, memo, useEffect } from "react";
 
 import { useAppDispatch, useAppSelector } from "@core/store";
 import { getMurals } from "@core/store/murals/dispatchers";
-import { selectMurals, selectMuralsLoading } from "@core/store/murals/selectors";
+import { selectMurals, selectMuralsListFilters, selectMuralsLoading } from "@core/store/murals/selectors";
 
 import { Loader } from "@components/Loader";
 
@@ -16,12 +16,14 @@ const MuralsListComponent: FC = () => {
 
   const murals = useAppSelector(selectMurals);
   const isLoading = useAppSelector(selectMuralsLoading);
+  /** @todo Fix empty filters. */
+  const filters = useAppSelector(selectMuralsListFilters);
 
   useEffect(() => {
     if (murals.length === 0) {
-      dispatch(getMurals(""));
+      dispatch(getMurals({ countOfMurals: 10, filters }));
     }
-  }, [dispatch, murals]);
+  }, [dispatch, filters, murals]);
 
   return (
     <>
