@@ -1,13 +1,11 @@
 import { FC, memo } from "react";
 
-import { MuralsList } from "./components/MuralsList/MuralsList";
-import { Filters } from "./components/Filters/Filters";
+import { Outlet } from "react-router-dom";
 
 const GalleryMuralsComponent: FC = () => {
   return (
     <>
-      <Filters />
-      <MuralsList />
+      <Outlet />
     </>
   );
 };

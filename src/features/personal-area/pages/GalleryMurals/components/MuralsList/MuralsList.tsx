@@ -4,8 +4,10 @@ import { useAppDispatch, useAppSelector } from "@core/store";
 import { getMurals } from "@core/store/murals/dispatchers";
 import { selectMurals, selectMuralsLoading } from "@core/store/murals/selectors";
 
-import { MuralListItem } from "../MuralListItem/MuralListItem";
 import { Loader } from "@components/Loader";
+
+import { MuralListItem } from "../MuralListItem";
+import { Filters } from "../Filters/Filters";
 
 import styles from "./MuralsList.module.css";
 
@@ -16,21 +18,24 @@ const MuralsListComponent: FC = () => {
   const isLoading = useAppSelector(selectMuralsLoading);
 
   useEffect(() => {
-    if(murals.length === 0) {
+    if (murals.length === 0) {
       dispatch(getMurals(""));
     }
   }, [dispatch, murals]);
 
   return (
-    <section className={styles.muralList}>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        murals.map(mural => {
-          return <MuralListItem key={mural.id} mural={mural} />;
-        })
-      )}
-    </section>
+    <>
+      <Filters />
+      <section className={styles.muralList}>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          murals.map(mural => {
+            return <MuralListItem key={mural.id} mural={mural} />;
+          })
+        )}
+      </section>
+    </>
   );
 };
 
