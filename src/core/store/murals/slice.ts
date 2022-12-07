@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { MuralFilters } from "@core/models/murals";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { getMurals } from "./dispatchers";
 import { initialState } from "./state";
@@ -6,7 +7,11 @@ import { initialState } from "./state";
 const muralsSlice = createSlice({
   name: "mural",
   initialState,
-  reducers: {},
+  reducers: {
+    setFilmsMurals: (state, action: PayloadAction<MuralFilters>) => {
+      state.muralsListFilters = action.payload;
+    },
+  },
   extraReducers: builder =>
     builder
       .addCase(getMurals.pending, state => {
