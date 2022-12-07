@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.image {
+  width: 500px;
+  height: 300px;
+  object-fit: cover;
+}
