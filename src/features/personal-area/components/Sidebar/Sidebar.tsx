@@ -18,7 +18,7 @@ const menuItem = [
   },
   {
     name: "Галерея работ",
-    address: "/personal-area/gallery-murals",
+    address: "/personal-area/murals",
   },
   {
     name: "Настройки",
