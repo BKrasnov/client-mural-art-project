@@ -8,12 +8,6 @@ export interface MuralState {
   /** Error for murals list. */
   readonly muralsListError?: string;
 
-  /** Error for murals details. */
-  readonly muralDetailsError?: string;
-
-  /** Id of the currently selected murals. */
-  readonly selectedMuralId?: number;
-
   /** List of murals. */
   readonly murals: Mural[];
 }
@@ -21,7 +15,5 @@ export interface MuralState {
 export const initialState: MuralState = {
   isLoading: false,
   muralsListError: undefined,
-  muralDetailsError: undefined,
-  selectedMuralId: undefined,
   murals: [],
 };
