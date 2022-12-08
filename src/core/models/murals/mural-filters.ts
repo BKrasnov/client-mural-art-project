@@ -6,9 +6,6 @@ export interface MuralFilters {
 
 /** Options required to build query constraints. */
 export interface MuralsFetchingOptions {
-  /** Count of murals to fetch. */
-  readonly countOfMurals: number;
-
   /** Filter options. */
   readonly filters: MuralFilters;
 }

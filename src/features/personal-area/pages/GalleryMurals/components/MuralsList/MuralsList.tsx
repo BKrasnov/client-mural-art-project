@@ -21,7 +21,7 @@ const MuralsListComponent: FC = () => {
 
   useEffect(() => {
     if (murals.length === 0) {
-      dispatch(getMurals({ countOfMurals: 10, filters }));
+      dispatch(getMurals({ filters }));
     }
   }, [dispatch, filters, murals]);
 
