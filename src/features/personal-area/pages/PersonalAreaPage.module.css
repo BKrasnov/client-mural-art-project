@@ -1,8 +1,10 @@
 .container {
-    display: flex;
+  display: flex;
 }
 
 .wrapper {
-    margin: 0 50px;
-    width: 100%;
-}   
+  padding: 40px 60px;
+  width: 100%;
+  background-image: url("https://clck.ru/32rdM4");
+  background-size: cover;
+}

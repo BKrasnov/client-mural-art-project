@@ -2,12 +2,16 @@ import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 import authReducer from "./auth/slice";
+import muralReducer from "./murals/slice";
+import muralDetailsReducer from "./muralDetails/slice";
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
+    murals: muralReducer,
+    muralDetails: muralDetailsReducer,
   },
-  middleware: (getDefaultMiddleware) =>
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       // We need to disable this check to allow ES6 classes in Redux.
       // You can find more info about this middleware in docs:
