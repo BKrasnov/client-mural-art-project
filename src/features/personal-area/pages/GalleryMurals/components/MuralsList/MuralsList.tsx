@@ -16,7 +16,6 @@ const MuralsListComponent: FC = () => {
 
   const murals = useAppSelector(selectMurals);
   const isLoading = useAppSelector(selectMuralsLoading);
-  /** @todo Fix empty filters. */
   const filters = useAppSelector(selectMuralsListFilters);
 
   useEffect(() => {
