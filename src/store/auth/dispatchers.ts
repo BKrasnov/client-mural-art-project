@@ -1,7 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
+import { AuthService, UserService } from "@api/services";
+
 import { Login, Registration } from "@core/models";
-import { AuthService, UserService } from "@core/api/services";
 
 export const authLogin = createAsyncThunk("auth/login", async (loginData: Login, thunkApi) => {
   try {
@@ -27,7 +28,4 @@ export const authLogout = createAsyncThunk("auth/logout", async () => {
   }
 });
 
-export const getUserFromCache = createAsyncThunk(
-  'auth/subscribeToAuthStatus',
-  async () => UserService.getUser(),
-);
+export const getUserFromCache = createAsyncThunk("auth/subscribeToAuthStatus", async () => UserService.getUser());

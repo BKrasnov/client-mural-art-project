@@ -1,5 +1,4 @@
-import { Mural } from "@core/models";
-import { MuralFilters } from "@core/models/murals";
+import { Mural, MuralFilters } from "@core/models";
 
 /** Mural state. */
 export interface MuralState {

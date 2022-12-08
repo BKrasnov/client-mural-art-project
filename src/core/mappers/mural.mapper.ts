@@ -1,5 +1,5 @@
+import { MuralDto } from "@core/dtos";
 import { Mural } from "@core/models";
-import { MuralDto } from "@core/api/dtos";
 
 export namespace MuralMapper {
   /**

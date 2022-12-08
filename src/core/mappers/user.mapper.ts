@@ -1,5 +1,6 @@
-import { User } from "@core/models";
 import { User as UserFirebase } from "firebase/auth";
+
+import { User } from "@core/models";
 
 export namespace UserMapper {
   /**

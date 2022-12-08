@@ -1,4 +1,4 @@
-import { MuralService } from "@core/api/services/muralService";
+import { MuralService } from "@api/services/muralService";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const getMuralById = createAsyncThunk("murals/muralById", async (id: number, thunkApi) => {

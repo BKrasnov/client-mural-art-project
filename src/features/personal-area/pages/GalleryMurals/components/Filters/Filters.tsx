@@ -1,10 +1,10 @@
 import { FC, memo } from "react";
 
-import { useAppDispatch, useAppSelector } from "@core/store";
-import { selectMuralsListFilters } from "@core/store/murals/selectors";
-import { setMuralsFilters } from "@core/store/murals/slice";
+import { useAppDispatch, useAppSelector } from "src/store";
+import { selectMuralsListFilters } from "src/store/murals/selectors";
+import { setMuralsFilters } from "src/store/murals/slice";
 
-import { MuralFilters } from "@core/models/murals";
+import { MuralFilters } from "@core/models";
 
 import styles from "./Filters.module.css";
 

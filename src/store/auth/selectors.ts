@@ -1,6 +1,6 @@
 import { createSelector } from "@reduxjs/toolkit";
 
-import { RootState } from "@core/store";
+import { RootState } from "src/store";
 
 /** Selects sign in state. */
 export const selectIsAuth = createSelector(

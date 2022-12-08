@@ -1,5 +1,5 @@
 import { Registration, Login, Token, User } from "@core/models";
-import { UserMapper } from "@core/api/mappers";
+import { UserMapper } from "@core/mappers";
 
 import { UserService, FirebaseService, TokenService } from "./index";
 

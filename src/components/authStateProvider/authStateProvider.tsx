@@ -2,9 +2,9 @@ import { memo, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Outlet } from "react-router-dom";
 
-import { AppDispatch, useAppSelector } from "@core/store";
-import { getUserFromCache } from "@core/store/auth/dispatchers";
-import { selectIsAuthLoading } from "@core/store/auth/selectors";
+import { AppDispatch, useAppSelector } from "src/store";
+import { getUserFromCache } from "src/store/auth/dispatchers";
+import { selectIsAuthLoading } from "src/store/auth/selectors";
 
 import { Loader } from "@components/Loader";
 

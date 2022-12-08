@@ -3,7 +3,7 @@ import { getAuth } from "firebase/auth";
 import { collection, CollectionReference, DocumentData, getFirestore, QuerySnapshot } from "firebase/firestore/lite";
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
 
-import { firebaseConfig } from "@core/api/config";
+import { firebaseConfig } from "@api/config";
 
 export namespace FirebaseService {
   const USER_NAME_COLLECTION = "users";

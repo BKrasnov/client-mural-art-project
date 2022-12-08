@@ -2,9 +2,9 @@ import { endAt, getDocs, limit, orderBy, query, QueryConstraint, startAt, where 
 
 import { FirebaseService } from "./firebaseService";
 
-import { MuralMapper } from "@core/api/mappers";
-import { MuralDto } from "@core/api/dtos";
-import { Mural, MuralsFetchingOptions } from "@core/models/murals";
+import { MuralDto } from "@core/dtos";
+import { MuralMapper } from "@core/mappers";
+import { Mural, MuralsFetchingOptions } from "@core/models";
 
 /**
  * Function for getting query constraints for films fetching based on options provided.
@@ -57,7 +57,6 @@ export namespace MuralService {
     if (muralSnapshot.empty) {
       throw new Error(`Mural with id ${id} doesn't exist`);
     }
-
     return MuralMapper.fromDto(muralSnapshot.docs[0].data());
   }
 }

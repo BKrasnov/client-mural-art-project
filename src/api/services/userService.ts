@@ -3,8 +3,8 @@ import { addDoc } from "firebase/firestore/lite";
 
 import { FirebaseService } from "./firebaseService";
 
+import { UserMapper } from "@core/mappers";
 import { User } from "@core/models";
-import { UserMapper } from "../mappers";
 
 export namespace UserService {
   /**

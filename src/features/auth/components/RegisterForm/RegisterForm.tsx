@@ -1,9 +1,9 @@
 import { memo, FC } from "react";
 import { Link } from "react-router-dom";
 
-import { useAppDispatch, useAppSelector } from "@core/store";
-import { authRegister } from "@core/store/auth/dispatchers";
-import { selectIsAuthLoading, selectRegisterError } from "@core/store/auth/selectors";
+import { useAppDispatch, useAppSelector } from "src/store";
+import { authRegister } from "src/store/auth/dispatchers";
+import { selectIsAuthLoading, selectRegisterError } from "src/store/auth/selectors";
 
 import { initialFormValues, RegisterSchema, RegistrationFormValue } from "./formSettings";
 import { Field, FormikProvider, useFormik } from "formik";

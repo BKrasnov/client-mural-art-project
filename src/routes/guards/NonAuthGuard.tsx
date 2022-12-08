@@ -1,8 +1,8 @@
 import { memo } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
-import { useAppSelector } from "@core/store";
-import { selectIsAuth } from "@core/store/auth/selectors";
+import { useAppSelector } from "src/store";
+import { selectIsAuth } from "src/store/auth/selectors";
 
 const NonAuthGuardComponent = () => {
   const isAuthUser = useAppSelector(selectIsAuth);

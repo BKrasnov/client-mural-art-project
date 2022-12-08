@@ -2,8 +2,8 @@ import { FC, memo } from "react";
 import { Link } from "react-router-dom";
 
 import logotype from "@static/logotype.png";
-import { authLogout } from "@core/store/auth/dispatchers";
-import { useAppDispatch } from "@core/store";
+import { authLogout } from "src/store/auth/dispatchers";
+import { useAppDispatch } from "src/store";
 
 import styles from "./Sidebar.module.css";
 

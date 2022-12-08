@@ -1,8 +1,8 @@
 import { FC, memo, useEffect } from "react";
 
-import { useAppDispatch, useAppSelector } from "@core/store";
-import { getMurals } from "@core/store/murals/dispatchers";
-import { selectMurals, selectMuralsListFilters, selectMuralsLoading } from "@core/store/murals/selectors";
+import { useAppDispatch, useAppSelector } from "src/store";
+import { getMurals } from "src/store/murals/dispatchers";
+import { selectMurals, selectMuralsListFilters, selectMuralsLoading } from "src/store/murals/selectors";
 
 import { Loader } from "@components/Loader";
 

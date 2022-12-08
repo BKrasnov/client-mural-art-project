@@ -1,9 +1,9 @@
 import { FC, memo, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import { useAppDispatch, useAppSelector } from "@core/store";
-import { selectMuralDetailsById } from "@core/store/muralDetails/selectors";
-import { getMuralById } from "@core/store/muralDetails/dispatchers";
+import { useAppDispatch, useAppSelector } from "src/store";
+import { selectMuralDetailsById } from "src/store/muralDetails/selectors";
+import { getMuralById } from "src/store/muralDetails/dispatchers";
 
 import styles from "./MuralDetails.module.css";
 

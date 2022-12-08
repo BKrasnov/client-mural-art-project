@@ -1,5 +1,6 @@
-import { MuralFilters } from "@core/models/murals";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+import { MuralFilters } from "@core/models/murals";
 
 import { getMurals } from "./dispatchers";
 import { initialState } from "./state";

@@ -21,9 +21,10 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
+      "@api/*": ["src/api/*"],
       "@components/*": ["src/components/*"],
-      "@static/*": ["src/static/*"],
       "@core/*": ["src/core/*"],
+      "@static/*": ["src/static/*"],
     },
   },
   // ...

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { MuralService } from "@core/api/services/muralService";
-import { MuralsFetchingOptions } from "@core/models/murals";
+import { MuralService } from "@api/services/muralService";
+import { MuralsFetchingOptions } from "@core/models";
 
 /**
  * Getting all murals.

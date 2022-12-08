@@ -4,3 +4,4 @@ export * from "./auth/registration";
 export * from "./auth/token";
 
 export * from "./murals/mural";
+export * from "./murals/mural-filters";
