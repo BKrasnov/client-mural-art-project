@@ -1,0 +1,38 @@
+.mural {
+  padding: 0;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 0;
+  background-color: #fff;
+}
+
+.mural__imageContainer {
+  height: 174px;
+  flex-shrink: 0;
+}
+
+.mural__image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px 10px 0 0;
+  object-fit: cover;
+}
+
+.mural__info {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  align-items: flex-start;
+}
+
+.mural__title {
+  font-size: 24px;
+  margin: 0 0 15px 0;
+  line-height: 28px;
+}
+
+.mural__city,
+.mural__event {
+  color: #6b6b6b;
+  font-size: 16px;
+}

@@ -1,0 +1,28 @@
+.wrapper {
+    text-align: center;
+    width: 100%;
+}
+
+.registerForm {
+    padding: 10px;
+    max-width: 450px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.registerForm__input {
+    border: none;
+    border-bottom: 2px solid #D1D1D4;
+    padding: 10px;
+    margin-bottom: 10px;
+    transition: .2s;
+}
+
+.registerForm__input:active,
+.registerForm__input:focus,
+.registerForm__input:hover {
+	outline: none;
+	border-bottom-color: #6A679E;
+}

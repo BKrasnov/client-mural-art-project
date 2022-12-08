@@ -1,12 +1,11 @@
 import { FC, memo } from "react";
 
-import { Sidebar } from "src/features/personal-area/components/Sidebar";
-
 import { Outlet } from "react-router-dom";
 
-import styles from "./PersonalAreaPage.module.css";
-
+import { Sidebar } from "../components/Sidebar";
 import { TitleBox } from "../components/TitleBox";
+
+import styles from "./PersonalAreaPage.module.css";
 
 const PersonalAreaPageComponent: FC = () => (
   <>
