@@ -12,3 +12,8 @@ export const selectMuralsLoading = createSelector(
   (state: RootState) => state.murals.isLoading,
   isLoading => isLoading
 );
+
+export const selectMuralsListFilters = createSelector(
+  (state: RootState) => state.murals.muralsListFilters,
+  muralsListFilters => muralsListFilters
+);

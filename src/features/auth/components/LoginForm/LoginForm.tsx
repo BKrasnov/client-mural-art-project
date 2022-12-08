@@ -24,7 +24,6 @@ const LoginFormComponent: FC = () => {
    * @param loginData Login data.
    */
   const handleSubmitUserLogin = (loginData: LoginFormValue) => {
-    console.log(loginData);
     dispatch(authLogin(loginData));
     formik.setSubmitting(false);
   };

@@ -2,10 +2,11 @@ import { FC, memo, useEffect } from "react";
 
 import { useAppDispatch, useAppSelector } from "@core/store";
 import { getMurals } from "@core/store/murals/dispatchers";
-import { selectMurals, selectMuralsLoading } from "@core/store/murals/selectors";
+import { selectMurals, selectMuralsListFilters, selectMuralsLoading } from "@core/store/murals/selectors";
 
 import { Loader } from "@components/Loader";
 
+import { Filters } from "../Filters/Filters";
 import { MuralListItem } from "../MuralListItem";
 
 import styles from "./MuralsList.module.css";
@@ -15,15 +16,15 @@ const MuralsListComponent: FC = () => {
 
   const murals = useAppSelector(selectMurals);
   const isLoading = useAppSelector(selectMuralsLoading);
+  const filters = useAppSelector(selectMuralsListFilters);
 
   useEffect(() => {
-    if (murals.length === 0) {
-      dispatch(getMurals());
-    }
-  }, [dispatch, murals]);
+    dispatch(getMurals({ filters }));
+  }, [dispatch, filters]);
 
   return (
     <>
+      <Filters/>
       <section className={styles.muralList}>
         {isLoading ? (
           <Loader />
