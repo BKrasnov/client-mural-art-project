@@ -8,7 +8,7 @@ const muralsSlice = createSlice({
   name: "mural",
   initialState,
   reducers: {
-    setFilmsMurals: (state, action: PayloadAction<MuralFilters>) => {
+    setMuralsFilters: (state, action: PayloadAction<MuralFilters>) => {
       state.muralsListFilters = action.payload;
     },
   },
@@ -28,3 +28,5 @@ const muralsSlice = createSlice({
 });
 
 export default muralsSlice.reducer;
+
+export const { setMuralsFilters } = muralsSlice.actions;
