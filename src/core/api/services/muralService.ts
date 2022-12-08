@@ -24,7 +24,7 @@ function getMuralsQueryConstraints(options: MuralsFetchingOptions): QueryConstra
     const veryHighCodePoint = "\uf8ff";
 
     constraints.push(orderBy("title"));
-    constraints.push(startAt(searchValue.toLowerCase()));
+    constraints.push(startAt(searchValue));
     constraints.push(endAt(`${searchValue}${veryHighCodePoint}`));
     console.log(constraints);
   }
@@ -41,8 +41,7 @@ export namespace MuralService {
    * @param options Options for fetching murals.
    */
   export async function getMurals(options: MuralsFetchingOptions): Promise<Mural[]> {
-    /** @todo ...getMuralsQueryConstraints(options) */
-    const queryMurals = query(muralCollectionRef);
+    const queryMurals = query(muralCollectionRef, ...getMuralsQueryConstraints(options));
     const muralsSnapshot = await getDocs(queryMurals);
     const murals: Mural[] = FirebaseService.mapQuerySnapshotToArray<MuralDto, Mural>(muralsSnapshot, MuralMapper.fromDto);
     return murals;

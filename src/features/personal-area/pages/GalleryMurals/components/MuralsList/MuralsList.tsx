@@ -20,10 +20,8 @@ const MuralsListComponent: FC = () => {
   const filters = useAppSelector(selectMuralsListFilters);
 
   useEffect(() => {
-    if (murals.length === 0) {
-      dispatch(getMurals({ filters }));
-    }
-  }, [dispatch, filters, murals]);
+    dispatch(getMurals({ filters }));
+  }, [dispatch, filters]);
 
   return (
     <>
