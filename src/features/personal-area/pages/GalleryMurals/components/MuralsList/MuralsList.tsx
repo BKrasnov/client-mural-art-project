@@ -7,7 +7,6 @@ import { selectMurals, selectMuralsLoading } from "@core/store/murals/selectors"
 import { Loader } from "@components/Loader";
 
 import { MuralListItem } from "../MuralListItem";
-import { Filters } from "../Filters/Filters";
 
 import styles from "./MuralsList.module.css";
 
@@ -19,13 +18,12 @@ const MuralsListComponent: FC = () => {
 
   useEffect(() => {
     if (murals.length === 0) {
-      dispatch(getMurals(""));
+      dispatch(getMurals());
     }
   }, [dispatch, murals]);
 
   return (
     <>
-      <Filters />
       <section className={styles.muralList}>
         {isLoading ? (
           <Loader />
