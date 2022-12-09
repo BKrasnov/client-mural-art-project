@@ -1,7 +1,7 @@
-import { Registration, Login, Token, User } from "@core/models";
+import { Registration, Login, User } from "@core/models";
 import { UserMapper } from "@core/mappers";
 
-import { UserService, FirebaseService, TokenService } from "./index";
+import { UserService, FirebaseService } from "./index";
 
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
@@ -9,8 +9,6 @@ export namespace AuthService {
   /**
    * Registers an account.
    * @param registrationData Data required for registration.
-   * @todo Add quality error handling.
-   * @todo Fix the "as User" type cast.
    */
   export async function register(registrationData: Registration): Promise<void> {
     const { email, password } = registrationData;
@@ -31,15 +29,14 @@ export namespace AuthService {
     const { email, password } = loginData;
     try {
       const userCredential = await signInWithEmailAndPassword(FirebaseService.auth, email, password);
-      const accessToken = await userCredential.user.getIdToken();
-      const user = UserMapper.fromUserDto(userCredential.user);
+      // const accessToken = await userCredential.user.getIdToken();
+      const user = await UserService.getUser(userCredential.user.uid);
+      // const token = new Token({
+      //   access: accessToken,
+      //   refresh: userCredential.user.refreshToken,
+      // });
 
-      const token = new Token({
-        access: accessToken,
-        refresh: userCredential.user.refreshToken,
-      });
-
-      await TokenService.save(token);
+      // await TokenService.save(token);
       return user;
     } catch (error) {
       throw error;
