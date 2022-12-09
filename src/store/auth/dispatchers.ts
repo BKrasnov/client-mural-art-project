@@ -22,7 +22,7 @@ export const authRegister = createAsyncThunk("auth/register", async (registerDat
 
 export const authLogout = createAsyncThunk("auth/logout", async () => {
   try {
-    return await UserService.logout();
+    return await AuthService.logout();
   } catch (error: unknown) {
     throw error;
   }

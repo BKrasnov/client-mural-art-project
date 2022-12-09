@@ -3,7 +3,7 @@ import { UserMapper } from "@core/mappers";
 
 import { UserService, FirebaseService } from "./index";
 
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 export namespace AuthService {
   /**
@@ -41,5 +41,13 @@ export namespace AuthService {
     } catch (error) {
       throw error;
     }
+  }
+
+  /**
+   * Logout a user.
+   */
+  export async function logout(): Promise<void> {
+    await signOut(FirebaseService.auth);
+    console.log("User logged out");
   }
 }

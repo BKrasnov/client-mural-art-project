@@ -58,12 +58,4 @@ export namespace UserService {
       );
     });
   }
-
-  /**
-   * Logout a user.
-   */
-  export async function logout(): Promise<void> {
-    await signOut(FirebaseService.auth);
-    console.log("User logged out");
-  }
 }
