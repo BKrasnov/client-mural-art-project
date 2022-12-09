@@ -6,18 +6,13 @@ import { getDownloadURL, getStorage, ref } from "firebase/storage";
 import { firebaseConfig } from "@api/config";
 
 export namespace FirebaseService {
-  const USER_NAME_COLLECTION = "users";
-
   /**  Initialize Firebase. */
   const app = initializeApp(firebaseConfig);
 
   /**  Create a db. */
-  export const database = getFirestore(app);
+  const database = getFirestore(app);
 
   export const auth = getAuth(app);
-
-  /** Collection of users from the Firebase. */
-  export const userCollectionRef = collection(database, USER_NAME_COLLECTION);
 
   /** Initialize Cloud Storage and get a reference to the service. */
   const storage = getStorage(app);
@@ -33,7 +28,7 @@ export namespace FirebaseService {
 
   /**
    * Getting typed collectionReference.
-   * @param collectionName - Collection name.
+   * @param collectionName Collection name.
    */
   export function getCollectionReference<T = DocumentData>(collectionName: string): CollectionReference<T> {
     return collection(database, collectionName) as CollectionReference<T>;
