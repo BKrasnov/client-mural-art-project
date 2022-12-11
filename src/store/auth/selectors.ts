@@ -2,6 +2,12 @@ import { createSelector } from "@reduxjs/toolkit";
 
 import { RootState } from "src/store";
 
+/** Selects a user from a state. */
+export const selectUser = createSelector(
+  (state: RootState) => state.auth.user,
+  user => user
+);
+
 /** Selects sign in state. */
 export const selectIsAuth = createSelector(
   (state: RootState) => state.auth.user,
