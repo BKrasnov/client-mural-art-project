@@ -1,0 +1,27 @@
+.profile__details {
+  display: flex;
+}
+
+.profile__avatar {
+  max-width: 260px;
+  max-height: 280px;
+  border-radius: 10px;
+  margin-right: 40px;
+}
+
+.profile__content {
+  min-width: 400px;
+  font-size: 24px;
+  font-family: "Raleway";
+  font-weight: 600;
+}
+
+.social {
+  display: flex;
+  gap: 20px;
+}
+
+.social__itemVk,
+.social__itemTg {
+  padding: 10px 0;
+}
