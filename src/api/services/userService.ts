@@ -1,4 +1,4 @@
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { addDoc, getDocs, limit, query, where } from "firebase/firestore/lite";
 
 import { FirebaseService } from "./firebaseService";

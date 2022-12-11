@@ -9,12 +9,12 @@ import styles from "./Sidebar.module.css";
 
 const menuItem = [
   {
-    name: "Главная",
+    name: "Личный кабинет",
     address: "personal-area/profile",
   },
   {
     name: "Подать заявку",
-    address: "/",
+    address: "/personal-area/apply",
   },
   {
     name: "Галерея работ",
@@ -22,7 +22,7 @@ const menuItem = [
   },
   {
     name: "Настройки",
-    address: "/",
+    address: "/settings",
   },
 ];
 
