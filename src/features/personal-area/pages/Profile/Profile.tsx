@@ -1,17 +1,20 @@
 import { FC, memo } from "react";
 
-import styles from "./Profile.module.css"
+import { Achievements } from "./components/Achievements";
+import { Events } from "./components/Events";
+import { Info } from "./components/Info";
 
-import avatar from "@static/avatar.jpg"
+import styles from "./Profile.module.css";
 
-const ProfileComponent: FC = () => (
-  <div className={styles.profileInfo}>
-    <div>
-      <img className={styles.profileInfo__avatar} src={avatar} alt="" />
-    </div>
-    <div className={styles.profileInfo__content}>
-    </div>
-  </div>
-);
+const ProfileComponent: FC = () => {
+
+  return (
+    <main className={styles.profile}>
+      <Info/>
+      <Achievements/>
+      <Events/>
+    </main>
+  );
+};
 
 export const Profile = memo(ProfileComponent);
