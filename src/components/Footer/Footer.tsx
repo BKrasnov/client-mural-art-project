@@ -7,7 +7,7 @@ const FooterComponent: FC = () => {
 
   return (
     <footer className={styles.footer}>
-      Footer
+      <div className={styles.footer__wrapper}>Footer</div>
     </footer>
   );
 };  
