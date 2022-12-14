@@ -1,15 +1,20 @@
 :root {
   /* General */
-  --primary-color: #330099;
-  
-  /* --primary-color-700: #7f7f7f;
-  --primary-color-800: #2b2b2b;
-  --primary-color-900: #1c0e0e; */
-  
+  --primary-color: #40388c;
+
+  --secondary-color: #f35d9b;
+
+  --tertiary-color: #6b6b6b;
+
   --primary-contrast-color: white;
 
   /* Font size */
-  --font-size-xl: 1.2rem;
-  --font-size-l: 1rem;
-  --font-size-m: 0.8rem;
-} 
+  --font-size-xxl: 60px;
+  --font-size-xl: 40px;
+  --font-size-l: 24px;
+  --font-size-m: 20px;
+  --font-size-s: 16px;
+
+  /* Font family */
+  --font-family-graffiti-theme: "Jack Brusher(RUS BY LYAJKA)";
+}

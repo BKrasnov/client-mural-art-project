@@ -1,0 +1,43 @@
+.event {
+  width: 400px;
+  height: 520px;
+  margin: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.event__content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.event__image {
+  width: 200px;
+  height: 190px;
+  background-size: cover;
+}
+
+.event__date {
+  font-weight: bold;
+}
+
+.event__location {
+  color: var(--tertiary-color);
+}
+
+.event__title {
+  margin: 30px 0;
+}
+
+.event__description {
+  height: 160px;
+  height: 160px;
+  overflow: hidden;
+}
+
+.event__buttonDetails {
+  margin: 20px 0;
+  font-weight: bold;
+  color: var(--primary-color);
+  cursor: pointer;
+}

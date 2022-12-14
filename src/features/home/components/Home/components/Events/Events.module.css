@@ -1,0 +1,34 @@
+.events {
+  padding: 150px 70px 50px 70px;
+}
+
+.events__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.events__title {
+  margin-bottom: 70px;
+  font-size: var(--font-size-xxl);
+}
+
+.events__types {
+  display: flex;
+  justify-content: space-between;
+  min-width: 380px;
+  margin-bottom: 30px;
+}
+
+.events__type {
+  font-size: var(--font-size-l);
+}
+
+.events__type:hover {
+  color: var(--tertiary-color);
+  cursor: pointer;
+}
+
+.events__list {
+  display: flex;
+}

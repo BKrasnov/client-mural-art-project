@@ -1,8 +1,13 @@
 .footer {
-    display: flex;
-    background: var(--secondary-color);
-    min-height: 30px;
-    align-items: center;
-    justify-content: center;
-    color: var(--secondary-contrast-color);
-  }
+  display: flex;
+  min-height: 30px;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary-contrast-color);
+  min-height: 30px;
+}
+
+.footer__wrapper {
+  width: 1440px;
+  max-width: 1440px;
+}

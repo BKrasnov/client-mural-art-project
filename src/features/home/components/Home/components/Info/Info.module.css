@@ -1,0 +1,32 @@
+.info {
+  padding: 150px 0 0 150px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.info__descriptions {
+  padding: 0 30px 30px 0;
+}
+
+.info__title {
+  margin: 120px 0 45px 0;
+}
+
+.info__titleText {
+  color: var(--primary-color);
+  font-size: var(--font-size-xxl);
+  font-family: var(--font-family-graffiti-theme);
+}
+
+.info__paragraph {
+  line-height: 28px;
+  max-width: 600px;
+  font-size: var(--font-size-l);
+}
+
+.info__image {
+  border-style: none;
+  min-width: 700px;
+  height: 750px;
+  background: url(https://clck.ru/32zgY3);
+}

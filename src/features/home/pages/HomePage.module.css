@@ -1,0 +1,5 @@
+.container {
+    overflow: hidden;
+    background-image: url("@static/fon.png");
+    background-size: cover;
+  }
