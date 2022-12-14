@@ -1,0 +1,17 @@
+.quote {
+  padding: 50px 0;
+  text-align: center;
+  font-size: var(--font-size-xl);
+  font-family: var(--font-family-graffiti-theme);
+  background: rgba(152, 152, 152, 0.2);
+}
+
+.grey {
+  background: 0;
+  color: var(--tertiary-color);
+}
+
+.pink {
+  background: 0;
+  color: var(--secondary-color);
+}
