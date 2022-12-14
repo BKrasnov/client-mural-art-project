@@ -23,3 +23,7 @@
 .header__link {
   padding: 3px;
 }
+
+.header__link a {
+  color: black;
+}

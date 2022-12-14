@@ -6,13 +6,12 @@
 
 body {
   font-family: "Fira Sans", sans-serif;
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-l);
   background: var(--primary-contrast-color);
 }
 
 a {
   text-decoration: none;
-  color: black !important;
 }
 a:active,
 a:visited {
@@ -25,4 +24,8 @@ li {
 
 button {
   font: inherit;
+}
+
+p {
+  text-align: left;
 }
