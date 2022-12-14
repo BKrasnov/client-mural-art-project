@@ -1,0 +1,11 @@
+.content {
+  max-width: 1440px;
+  margin: 0px auto;
+}
+
+.content__image {
+  min-width: 100%;
+  min-height: 700px;
+  background: url(https://clck.ru/32zg8Z);
+}
+
