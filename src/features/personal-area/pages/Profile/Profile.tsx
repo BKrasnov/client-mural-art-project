@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 
 import { Achievements } from "./components/Achievements";
-import { Events } from "./components/Events";
+import { EventList } from "./components/EventList";
 import { Info } from "./components/Info";
 
 import styles from "./Profile.module.css";
@@ -12,7 +12,7 @@ const ProfileComponent: FC = () => {
     <main className={styles.profile}>
       <Info/>
       <Achievements/>
-      <Events/>
+      <EventList/>
     </main>
   );
 };
