@@ -1,0 +1,13 @@
+.eventCard {
+  max-width: 400px;
+  min-height: 200px;
+  border-radius: 10px;
+}
+
+.eventCard__info {
+  padding: 40px 20px;
+}
+
+.eventCard__title {
+  padding-top: 30px;
+}
