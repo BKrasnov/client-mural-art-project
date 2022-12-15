@@ -21,10 +21,6 @@ const menuItem = [
     name: "Галерея работ",
     address: "/personal-area/murals",
   },
-  {
-    name: "Настройки",
-    address: "/settings",
-  },
 ];
 
 const SidebarComponent: FC = () => {
