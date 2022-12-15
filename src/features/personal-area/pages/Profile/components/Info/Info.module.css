@@ -16,6 +16,10 @@
   font-weight: 600;
 }
 
+.profile__names {
+  margin-bottom: 20px;
+}
+
 .social {
   display: flex;
   gap: 20px;

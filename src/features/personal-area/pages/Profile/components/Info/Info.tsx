@@ -3,9 +3,17 @@ import { FC, memo } from "react";
 import { useAppSelector } from "src/store";
 import { selectUser } from "src/store/auth/selectors";
 
+import logoVk from "src/static/logoVk.svg";
+import logoTg from "src/static/logoTg.svg";
+
 import styles from "./Info.module.css";
 
 const InfoComponent: FC = () => {
+  const socialLink = {
+    vk: "https://vk.com/",
+    tg: "https://web.telegram.org/",
+  };
+
   const userDefault = {
     id: "1",
     firstName: "Имя",
@@ -19,26 +27,22 @@ const InfoComponent: FC = () => {
 
   return (
     <div className={styles.profile__details}>
-      <div>
-        <img className={styles.profile__avatar} src={user.avatar ?? userDefault.avatar} alt="avatar" />
-      </div>
+      <img className={styles.profile__avatar} src={user.avatar ?? userDefault.avatar} alt="avatar" />
       <div className={styles.profile__content}>
         <div className={styles.profile__names}>
           <div>
-            <span className="profileInfo__fullname">
-              {user.firstName} {user.lastName}
-            </span>
+            <span>{user.firstName + " " + user.lastName}</span>
           </div>
           <div>
-            <span className="profileInfo__username">{user.nickName ?? "Ник отсутствует"}</span>
+            <span>{user.nickName ?? "Ник отсутствует"}</span>
           </div>
         </div>
         <div className={styles.social}>
-          <a href="https://web.telegram.org/" className={styles.social__itemTg}>
-            <span>VK</span>
+          <a href={socialLink.tg} className={styles.social__itemTg}>
+            <img src={logoTg} alt="logoTg" />
           </a>
-          <a href="https://vk.com/" className={styles.social__itemVk}>
-            <span>TG</span>
+          <a href={socialLink.vk} className={styles.social__itemVk}>
+            <img src={logoVk} alt="logoVk" />
           </a>
         </div>
       </div>
