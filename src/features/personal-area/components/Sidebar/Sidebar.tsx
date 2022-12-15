@@ -1,28 +1,25 @@
 import { FC, memo } from "react";
 import { Link } from "react-router-dom";
 
-import logotype from "@static/logotype.png";
 import { authLogout } from "src/store/auth/dispatchers";
 import { useAppDispatch } from "src/store";
+
+import logo from "@static/logoSibirianMural.png";
 
 import styles from "./Sidebar.module.css";
 
 const menuItem = [
   {
-    name: "Главная",
+    name: "Личный кабинет",
     address: "personal-area/profile",
   },
   {
     name: "Подать заявку",
-    address: "/",
+    address: "/personal-area/apply",
   },
   {
     name: "Галерея работ",
     address: "/personal-area/murals",
-  },
-  {
-    name: "Настройки",
-    address: "/",
   },
 ];
 
@@ -37,7 +34,7 @@ const SidebarComponent: FC = () => {
   return (
     <div className={styles.sidebar}>
       <div>
-        <img className={styles.logo} src={logotype} alt="" />
+        <img className={styles.logo} src={logo} alt="" />
       </div>
       <ul className={styles.sidebar__menu}>
         {menuItem.map(item => {

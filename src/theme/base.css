@@ -18,6 +18,10 @@ a:visited {
   color: var(--primary-color);
 }
 
+ul {
+  padding: 0;
+}
+
 li {
   list-style-type: none;
 }
