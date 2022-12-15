@@ -1,9 +1,10 @@
 import { FC, memo } from "react";
 import { Link } from "react-router-dom";
 
-import logotype from "@static/logotype.png";
 import { authLogout } from "src/store/auth/dispatchers";
 import { useAppDispatch } from "src/store";
+
+import logo from "@static/logoSibirianMural.png";
 
 import styles from "./Sidebar.module.css";
 
@@ -37,7 +38,7 @@ const SidebarComponent: FC = () => {
   return (
     <div className={styles.sidebar}>
       <div>
-        <img className={styles.logo} src={logotype} alt="" />
+        <img className={styles.logo} src={logo} alt="" />
       </div>
       <ul className={styles.sidebar__menu}>
         {menuItem.map(item => {
