@@ -15,21 +15,26 @@ const authSlice = createSlice({
       .addCase(authLogin.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoading = false;
+        state.isSubmitted = true;
       })
       .addCase(authLogin.rejected, (state, action) => {
         state.loginError = action.error.message;
         state.isLoading = false;
+        state.isSubmitted = false;
       })
 
       .addCase(authRegister.pending, state => {
         state.isLoading = true;
       })
-      .addCase(authRegister.fulfilled, state => {
+      .addCase(authRegister.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.isSubmitted = true;
+        state.user = action.payload;
       })
       .addCase(authRegister.rejected, (state, action) => {
         state.registerError = action.error.message;
         state.isLoading = false;
+        state.isSubmitted = false;
       })
 
       .addCase(authLogout.pending, state => {

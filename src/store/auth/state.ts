@@ -13,10 +13,14 @@ export interface AuthState {
 
   /** Currently signed in user. */
   readonly user: User | null;
+
+  /** Whether it has been submitted or not.. */
+  readonly isSubmitted: boolean;
 }
 
 export const initialState: AuthState = {
   isLoading: false,
   loginError: undefined,
   user: null,
+  isSubmitted: false,
 };
