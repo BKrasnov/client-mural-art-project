@@ -1,7 +1,8 @@
 import { FC } from "react";
-import { Navigate, RouteObject, useRoutes } from "react-router-dom";
+import { RouteObject, useRoutes } from "react-router-dom";
 
 import { AuthStateProvider } from "@components/authStateProvider";
+import { ErrorPage } from "@components/ErrorPage";
 
 import { personalAreaRoutes } from "src/features/personal-area/routes";
 import { homeRoutes } from "src/features/home/routes";
@@ -13,7 +14,7 @@ const routes: RouteObject[] = [
     children: [
       {
         path: "*",
-        element: <Navigate to="/auth/sign-in" />,
+        element: <ErrorPage />,
       },
       ...homeRoutes,
       ...authRoutes,
