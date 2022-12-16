@@ -43,9 +43,7 @@ const RegisterFormComponent: FC = () => {
             <Field className={styles.registerForm__input} name="email" placeholder="Почта" label="Email" type="email" required />
             <Field className={styles.registerForm__input} name="password" placeholder="Пароль" label="Password" type="password" required />
             <FormHelperText error>{registerError}</FormHelperText>
-            <LoadingButton loading={isLoading} loadingIndicator="Loading…" type="submit">
-              Регистрация
-            </LoadingButton>
+            <button type="submit">Регистрация</button>
           </form>
         </FormikProvider>
         <span>
