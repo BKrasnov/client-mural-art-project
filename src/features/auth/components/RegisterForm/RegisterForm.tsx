@@ -1,9 +1,9 @@
-import { memo, FC } from "react";
-import { Link } from "react-router-dom";
+import { memo, FC, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "src/store";
 import { authRegister } from "src/store/auth/dispatchers";
-import { selectIsAuthLoading, selectRegisterError } from "src/store/auth/selectors";
+import { selectIsAuthLoading, selectIsAuthSubmitted, selectRegisterError } from "src/store/auth/selectors";
 
 import { initialFormValues, RegisterSchema, RegistrationFormValue } from "./formSettings";
 import { Field, FormikProvider, useFormik } from "formik";
@@ -18,7 +18,10 @@ const RegisterFormComponent: FC = () => {
 
   const isLoading = useAppSelector(selectIsAuthLoading);
   const registerError = useAppSelector(selectRegisterError);
+  const isFormSubmitted = useAppSelector(selectIsAuthSubmitted);
 
+  const navigate = useNavigate();
+  
   /**
    * Handles form submit.
    * @param registerData Login data.
@@ -34,6 +37,12 @@ const RegisterFormComponent: FC = () => {
     onSubmit: handleSubmitUserLogin,
   });
 
+  useEffect(() => {
+    if (isFormSubmitted) {
+      navigate('/personal-area/profile');
+    }
+  }, [isFormSubmitted, navigate]);
+
   return (
     <>
       <div className={styles.wrapper}>
@@ -43,9 +52,9 @@ const RegisterFormComponent: FC = () => {
             <Field className={styles.registerForm__input} name="email" placeholder="Почта" label="Email" type="email" required />
             <Field className={styles.registerForm__input} name="password" placeholder="Пароль" label="Password" type="password" required />
             <FormHelperText error>{registerError}</FormHelperText>
-            <LoadingButton loading={isLoading} loadingIndicator="Loading…" type="submit">
+            <button type="submit">
               Регистрация
-            </LoadingButton>
+            </button>
           </form>
         </FormikProvider>
         <span>

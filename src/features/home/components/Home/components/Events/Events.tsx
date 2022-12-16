@@ -17,7 +17,7 @@ const EventsComponent = () => {
         </div>
         <div className={styles.events__list}>
           {events.map(event => {
-            return <EventItem title={event.title} description={event.description} link={event.link} location={event.location} date={event.date} />;
+            return <EventItem key={event.id} title={event.title} description={event.description} link={event.link} location={event.location} date={event.date} />;
           })}
         </div>
       </div>

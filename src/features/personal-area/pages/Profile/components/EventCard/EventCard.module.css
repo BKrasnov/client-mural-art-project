@@ -9,5 +9,6 @@
 }
 
 .eventCard__title {
-  padding-top: 30px;
+  padding: 30px 70px 0 0;
+  font-family: var(--font-family-graffiti-theme);
 }

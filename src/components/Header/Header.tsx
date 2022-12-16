@@ -1,26 +1,33 @@
 import { FC, memo } from "react";
 
+import { Link } from "react-router-dom";
+
+import { useAppSelector } from "src/store";
+import { selectIsAuth } from "src/store/auth/selectors";
+
 import styles from "./Header.module.css";
 
 const HeaderComponent: FC = () => {
+  const isSignedIn = useAppSelector(selectIsAuth);
+
   return (
     <header className={styles.header}>
       <div className={styles.header__wrapper}>
         <ul className={styles.header__list}>
           <li className={styles.header__link}>
-            <a href="/">
+            <Link to={"/artists"}>
               <span>Художникам</span>
-            </a>
+            </Link>
           </li>
           <li className={styles.header__link}>
-            <a href="/">
+            <Link to={"/clients"}>
               <span>Заказчикам</span>
-            </a>
+            </Link>
           </li>
           <li className={styles.header__link}>
-            <a href="/auth/login">
-              <span>Войти</span>
-            </a>
+            <Link to={"/auth/login"}>
+              <span>{isSignedIn ? "Личный кабинет" : "Войти"}</span>
+            </Link>
           </li>
         </ul>
       </div>

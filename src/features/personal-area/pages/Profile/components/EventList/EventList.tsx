@@ -21,9 +21,9 @@ const eventCards = [
 
 const EventListComponent: FC = () => {
   return (
-    <div>
-      <h2>Мои завершенные мероприятия</h2>
-      <ul className={styles.eventList}>
+    <div className={styles.events}>
+      <h3>Мои завершенные мероприятия</h3>
+      <ul className={styles.events__list}>
         {eventCards.map(eventCard => {
           return <EventCard key={eventCard.id} {...eventCard} />;
         })}

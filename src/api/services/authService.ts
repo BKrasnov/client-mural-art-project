@@ -10,12 +10,13 @@ export namespace AuthService {
    * Registers an account.
    * @param registrationData Data required for registration.
    */
-  export async function register(registrationData: Registration): Promise<void> {
+  export async function register(registrationData: Registration): Promise<User | null> {
     const { email, password } = registrationData;
     try {
       const userCredential = await createUserWithEmailAndPassword(FirebaseService.auth, email, password);
       const user = UserMapper.fromUserDto(userCredential.user);
       await UserService.addUser(user);
+      return user;
     } catch (error) {
       throw error;
     }
@@ -48,6 +49,5 @@ export namespace AuthService {
    */
   export async function logout(): Promise<void> {
     await signOut(FirebaseService.auth);
-    console.log("User logged out");
   }
 }

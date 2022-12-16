@@ -1,5 +1,8 @@
 import { lazy } from "react";
-import { Navigate, RouteObject } from "react-router-dom";
+
+import { RouteObject } from "react-router-dom";
+
+import { ErrorPage } from "@components/ErrorPage";
 
 const HomePage = lazy(() =>
   import("./pages/HomePage").then((module) => ({ default: module.HomePage }))
@@ -12,6 +15,6 @@ export const homeRoutes: RouteObject[] = [
   },
   {
     path: "*",
-    element: <Navigate to="HomePage" />,
+    element: <ErrorPage/>,
   },
 ];

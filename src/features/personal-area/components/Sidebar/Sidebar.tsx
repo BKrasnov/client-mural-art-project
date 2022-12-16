@@ -11,7 +11,7 @@ import styles from "./Sidebar.module.css";
 const menuItem = [
   {
     name: "Личный кабинет",
-    address: "personal-area/profile",
+    address: "/personal-area/profile",
   },
   {
     name: "Подать заявку",
@@ -49,11 +49,11 @@ const SidebarComponent: FC = () => {
           );
         })}
         <li className={styles.sidebar__link}>
-          <a href="/">
+          <Link to={"/"}>
             <button onClick={handleSubmitUserLogout} className={styles.sidebar__button}>
               <span>Выход</span>
             </button>
-          </a>
+          </Link>
         </li>
       </ul>
     </div>

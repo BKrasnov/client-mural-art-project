@@ -14,7 +14,6 @@ export namespace UserService {
   /**
    * Adding a user to the collection.
    * @param user The user object to be stored.
-   * @todo Add quality error handling.
    */
   export async function addUser(user: User): Promise<void> {
     try {

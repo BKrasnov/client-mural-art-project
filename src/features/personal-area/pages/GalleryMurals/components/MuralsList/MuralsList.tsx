@@ -27,7 +27,7 @@ const MuralsListComponent: FC = () => {
       <Filters/>
       <section className={styles.muralList}>
         {isLoading ? (
-          <Loader />
+          <div>Загрузка</div>
         ) : (
           murals.map(mural => {
             return <MuralListItem key={mural.id} mural={mural} />;

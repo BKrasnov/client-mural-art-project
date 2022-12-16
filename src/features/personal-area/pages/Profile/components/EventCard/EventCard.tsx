@@ -11,7 +11,7 @@ interface IEventCard {
 
 const EventCardComponent: FC<IEventCard> = IEventCard => {
   const { title, date, link } = IEventCard;
-  const style = { "background-image": `url(${link})` } as React.CSSProperties;
+  const style = { backgroundImage: `url(${link})` } as React.CSSProperties;
   return (
     <div style={style} className={styles.eventCard}>
       <div className={styles.eventCard__info}>

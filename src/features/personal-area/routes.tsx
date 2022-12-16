@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { Navigate, RouteObject } from "react-router-dom";
+import { RouteObject } from "react-router-dom";
 
 import { AuthGuard } from "src/routes/guards/AuthGuard";
 
@@ -7,6 +7,8 @@ import { Profile } from "./pages/Profile";
 import { GalleryMurals } from "./pages/GalleryMurals";
 import { MuralDetails } from "./pages/GalleryMurals/components/MuralDetails";
 import { MuralsList } from "./pages/GalleryMurals/components/MuralsList";
+
+import { ErrorPage } from "@components/ErrorPage";
 
 const PersonalAreaPage = lazy(() => import("./pages/PersonalAreaPage").then(module => ({ default: module.PersonalAreaPage })));
 
@@ -38,14 +40,10 @@ export const personalAreaRoutes: RouteObject[] = [
           },
           {
             path: "*",
-            element: <Navigate to="/personal-area/profile" />,
+            element: <ErrorPage />,
           },
         ],
       },
     ],
-  },
-  {
-    path: "*",
-    element: <Navigate to="personal-area/profile" />,
   },
 ];
