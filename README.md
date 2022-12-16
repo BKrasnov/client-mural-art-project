@@ -5,6 +5,12 @@ A project that allows graffiti artists to create their own common environment fo
 ## Stack
 ``ReactJS, Typescript, redux-toolkit, CSS modules, formik-yup, firebase``
 
+## Team
+Bogdan Krasnov - Developer, project Manager  
+Elizabeth Bodrova - UI/UX Designer  
+Polina Puchkova - UI/UX Designer  
+Nadia Bazhenova - Project manager  
+
 ## Installation
 ### ``npm i``
 
