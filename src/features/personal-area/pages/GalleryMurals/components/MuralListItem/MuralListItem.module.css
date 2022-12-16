@@ -2,8 +2,8 @@
   padding: 0;
   cursor: pointer;
   border-radius: 10px;
-  border: 0;
   background-color: #fff;
+  border: 0;
 }
 
 .mural__imageContainer {
@@ -21,18 +21,18 @@
 .mural__info {
   display: flex;
   flex-direction: column;
-  padding: 20px;
   align-items: flex-start;
+  padding: 20px;
 }
 
 .mural__title {
   font-size: var(--font-size-l);
   margin: 0 0 15px 0;
-  line-height: 28px;
+  color: black;
 }
 
 .mural__city,
 .mural__event {
-  color: #6b6b6b;
+  color: var(--tertiary-color);
   font-size: var(--font-size-s);
 }

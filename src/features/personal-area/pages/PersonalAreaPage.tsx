@@ -7,16 +7,18 @@ import { TitleBox } from "../components/TitleBox";
 
 import styles from "./PersonalAreaPage.module.css";
 
-const PersonalAreaPageComponent: FC = () => (
-  <>
-    <div className={styles.container}>
-      <Sidebar />
-      <div className={styles.wrapper}>
-        <TitleBox />
-        <Outlet />
+const PersonalAreaPageComponent: FC = () => {
+  return (
+    <>
+      <div className={styles.container}>
+        <Sidebar />
+        <div className={styles.wrapper}>
+          <TitleBox />
+          <Outlet />
+        </div>
       </div>
-    </div>
-  </>
-);
+    </>
+  );
+};
 
 export const PersonalAreaPage = memo(PersonalAreaPageComponent);

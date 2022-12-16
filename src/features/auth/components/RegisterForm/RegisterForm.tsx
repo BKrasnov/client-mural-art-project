@@ -3,20 +3,18 @@ import { Link } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "src/store";
 import { authRegister } from "src/store/auth/dispatchers";
-import { selectIsAuthLoading, selectRegisterError } from "src/store/auth/selectors";
+import { selectRegisterError } from "src/store/auth/selectors";
 
 import { initialFormValues, RegisterSchema, RegistrationFormValue } from "./formSettings";
 import { Field, FormikProvider, useFormik } from "formik";
 
 import { FormHelperText } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
 
 import styles from "./RegistrationForm.module.css";
 
 const RegisterFormComponent: FC = () => {
   const dispatch = useAppDispatch();
 
-  const isLoading = useAppSelector(selectIsAuthLoading);
   const registerError = useAppSelector(selectRegisterError);
 
   /**

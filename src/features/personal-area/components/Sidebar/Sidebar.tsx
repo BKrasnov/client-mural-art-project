@@ -11,7 +11,7 @@ import styles from "./Sidebar.module.css";
 const menuItem = [
   {
     name: "Личный кабинет",
-    address: "personal-area/profile",
+    address: "/personal-area/profile",
   },
   {
     name: "Подать заявку",
