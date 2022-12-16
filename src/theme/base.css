@@ -6,15 +6,16 @@
 
 body {
   font-family: "Fira Sans", sans-serif;
-  font-size: var(--font-size-l);
-  background: var(--primary-contrast-color);
+  font-size: var(--font-size-m);
+  
+  background-image: url("@static/fon.png");
+  background-size: cover;
 }
 
 a {
   text-decoration: none;
 }
-a:active,
-a:visited {
+a:active {
   color: var(--primary-color);
 }
 

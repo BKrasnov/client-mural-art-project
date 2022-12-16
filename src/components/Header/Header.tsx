@@ -1,5 +1,7 @@
 import { FC, memo } from "react";
 
+import { Link } from "react-router-dom";
+
 import styles from "./Header.module.css";
 
 const HeaderComponent: FC = () => {
@@ -8,19 +10,19 @@ const HeaderComponent: FC = () => {
       <div className={styles.header__wrapper}>
         <ul className={styles.header__list}>
           <li className={styles.header__link}>
-            <a href="/">
+            <Link to={"/artists"}>
               <span>Художникам</span>
-            </a>
+            </Link>
           </li>
           <li className={styles.header__link}>
-            <a href="/">
+            <Link to={"/clients"}>
               <span>Заказчикам</span>
-            </a>
+            </Link>
           </li>
           <li className={styles.header__link}>
-            <a href="/auth/login">
+            <Link to={"/auth/login"}>
               <span>Войти</span>
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

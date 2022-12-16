@@ -49,11 +49,11 @@ const SidebarComponent: FC = () => {
           );
         })}
         <li className={styles.sidebar__link}>
-          <a href="/">
+          <Link to={"/"}>
             <button onClick={handleSubmitUserLogout} className={styles.sidebar__button}>
               <span>Выход</span>
             </button>
-          </a>
+          </Link>
         </li>
       </ul>
     </div>
