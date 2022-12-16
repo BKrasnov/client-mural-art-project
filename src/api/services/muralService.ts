@@ -9,7 +9,6 @@ import { Mural, MuralsFetchingOptions } from "@core/models";
 /**
  * Function for getting query constraints for films fetching based on options provided.
  * @param options - Options to builds constraints.
- * @todo Fix search by title.
  */
 function getMuralsQueryConstraints(options: MuralsFetchingOptions): QueryConstraint[] {
   const constraints: QueryConstraint[] = [];
