@@ -43,6 +43,7 @@ const authSlice = createSlice({
       .addCase(authLogout.fulfilled, state => {
         state.user = null;
         state.isLoading = false;
+        state.isSubmitted = false;
       })
 
       .addCase(getUserFromCache.pending, state => {

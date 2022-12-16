@@ -13,7 +13,7 @@ const location = {
 const TitleBoxComponent: FC = () => {
   const currentLocation = useLocation();
   if (currentLocation.pathname === location.profile) {
-    location.title = "Галерея работ";
+    location.title = "Личный кабинет";
   }
   if (currentLocation.pathname === location.murals) {
     location.title = "Галерея работ";
