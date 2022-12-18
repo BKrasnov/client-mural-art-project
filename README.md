@@ -15,6 +15,5 @@ Nadia Bazhenova - Project manager
 ### ``npm i``
 
 ## Running the app
-### ``npm start``
-Runs the app in the development mode.
-Open http://localhost:3000 to view it in the browser.
+Attention, the project will not work, because there is no env file.  
+It's better to look at this link: https://mural-art-project-l768.vercel.app
