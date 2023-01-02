@@ -21,7 +21,7 @@ const RegisterFormComponent: FC = () => {
   const isFormSubmitted = useAppSelector(selectIsAuthSubmitted);
 
   const navigate = useNavigate();
-  
+
   /**
    * Handles form submit.
    * @param registerData Login data.
@@ -39,7 +39,7 @@ const RegisterFormComponent: FC = () => {
 
   useEffect(() => {
     if (isFormSubmitted) {
-      navigate('/personal-area/profile');
+      navigate("/personal-area/profile");
     }
   }, [isFormSubmitted, navigate]);
 
@@ -50,11 +50,18 @@ const RegisterFormComponent: FC = () => {
         <FormikProvider value={formik}>
           <form onSubmit={formik.handleSubmit} className={styles.registerForm}>
             <Field className={styles.registerForm__input} name="email" placeholder="Почта" label="Email" type="email" required />
+            <Field className={styles.registerForm__input} name="nickname" placeholder="Введите никнейм" label="NickName" type="text" required />
             <Field className={styles.registerForm__input} name="password" placeholder="Пароль" label="Password" type="password" required />
+            <Field  
+              className={styles.registerForm__input}
+              name="passwordConfirm"
+              placeholder="Повторите пароль"
+              label="Password"
+              type="password"
+              required
+            />
             <FormHelperText error>{registerError}</FormHelperText>
-            <button type="submit">
-              Регистрация
-            </button>
+            <button type="submit">Регистрация</button>
           </form>
         </FormikProvider>
         <span>
