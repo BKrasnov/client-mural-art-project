@@ -14,7 +14,7 @@ import styles from "./LoginForm.module.css";
 
 const LoginFormComponent: FC = () => {
   const dispatch = useAppDispatch();
-  
+
   const loginError = useAppSelector(selectLoginError);
 
   /**
@@ -34,20 +34,18 @@ const LoginFormComponent: FC = () => {
 
   return (
     <>
-      <>
-        <h2>Авторизация пользователя</h2>
-        <FormikProvider value={formik}>
-          <form onSubmit={formik.handleSubmit} className={styles.loginForm}>
-            <Field className={styles.loginForm__input} name="email" placeholder="Почта" label="Email" type="email" required />
-            <Field className={styles.loginForm__input} name="password" placeholder="Пароль" label="Password" type="password" required />
-            <FormHelperText error>{loginError}</FormHelperText>
-            <button type="submit">Войти</button>
-          </form>
-        </FormikProvider>
-        <span>
-          Нет аккаунта? <Link to="/auth/registration">Регистрация</Link>
-        </span>
-      </>
+      <h2>Авторизация пользователя</h2>
+      <FormikProvider value={formik}>
+        <form onSubmit={formik.handleSubmit} className={styles.loginForm}>
+          <Field className={styles.loginForm__input} name="email" placeholder="Почта" label="Email" type="email" required />
+          <Field className={styles.loginForm__input} name="password" placeholder="Пароль" label="Password" type="password" required />
+          <FormHelperText error>{loginError}</FormHelperText>
+          <button type="submit">Войти</button>
+        </form>
+      </FormikProvider>
+      <span>
+        Нет аккаунта? <Link to="/auth/registration">Регистрация</Link>
+      </span>
     </>
   );
 };
