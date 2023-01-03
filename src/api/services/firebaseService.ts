@@ -1,7 +1,12 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+  UserCredential,
+} from "firebase/auth";
 import { collection, CollectionReference, DocumentData, getFirestore, QuerySnapshot } from "firebase/firestore/lite";
-import { getDownloadURL, getStorage, ref } from "firebase/storage";
 
 import { firebaseConfig } from "@api/config";
 
@@ -14,16 +19,22 @@ export namespace FirebaseService {
 
   export const auth = getAuth(app);
 
-  /** Initialize Cloud Storage and get a reference to the service. */
-  const storage = getStorage(app);
-
   /**
-   * Get the reference to the image from our storage.
-   * @param imageRef Reference to the image.
+   * Create a user with email and password.
+   * @param email Email user.
+   * @param password Password user.
    */
-  export async function getImageReference(imageRef: string | undefined): Promise<string> {
-    const storageReference = ref(storage, imageRef);
-    return await getDownloadURL(storageReference);
+  export async function createUser(email: string, password: string): Promise<UserCredential> {
+    return createUserWithEmailAndPassword(auth, email, password);
+  }
+
+  /** Login a user with email and password. */
+  export async function loginUser(email: string, password: string): Promise<UserCredential> {
+    return signInWithEmailAndPassword(FirebaseService.auth, email, password);
+  }
+
+  export async function logoutUser(): Promise<void> {
+    signOut(FirebaseService.auth);
   }
 
   /**
@@ -40,7 +51,10 @@ export namespace FirebaseService {
    * @param fromDtoMapper Mapper method which perform mapping.
    * @returns Array with entities.
    */
-  export function mapQuerySnapshotToArray<TDto, TData>(snapshot: QuerySnapshot<TDto>, fromDtoMapper: (dto: TDto) => TData): TData[] {
+  export function mapQuerySnapshotToArray<TDto, TData>(
+    snapshot: QuerySnapshot<TDto>,
+    fromDtoMapper: (dto: TDto) => TData
+  ): TData[] {
     return snapshot.docs.map(dto => fromDtoMapper(dto.data()));
   }
 }
