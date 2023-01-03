@@ -2,7 +2,7 @@ import * as yup from "yup";
 
 import { Login } from "@core/models";
 
-import { FormValidationError } from "../../utils/FormValidationError";
+import { FormValidationError, FormMessageError } from "../../utils/FormErrors";
 
 /** Login form. */
 export type LoginFormValue = Login;
@@ -12,9 +12,7 @@ export const initialFormValues: LoginFormValue = {
   password: "",
 };
 
-const EMAIL_ERROR_MESSAGE = "Email is required";
-
 export const LoginSchema: yup.SchemaOf<LoginFormValue> = yup.object({
-  email: yup.string().email(FormValidationError.invalidEmail).required(EMAIL_ERROR_MESSAGE),
-  password: yup.string().required(FormValidationError.required),
+  email: yup.string().email(FormValidationError.invalidEmail).required(FormMessageError.email),
+  password: yup.string().required(FormMessageError.password),
 });
