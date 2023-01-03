@@ -21,7 +21,7 @@ const LoginFormComponent: FC = () => {
    * Handles form submit.
    * @param loginData Login data.
    */
-  const handleSubmitUserLogin = (loginData: LoginFormValue) => {
+  const handleSubmitForm = (loginData: LoginFormValue) => {
     dispatch(authLogin(loginData));
     formik.setSubmitting(false);
   };
@@ -29,7 +29,7 @@ const LoginFormComponent: FC = () => {
   const formik = useFormik({
     initialValues: initialFormValues,
     validationSchema: LoginSchema,
-    onSubmit: handleSubmitUserLogin,
+    onSubmit: handleSubmitForm,
   });
 
   return (
