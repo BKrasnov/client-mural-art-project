@@ -10,5 +10,5 @@ export interface Registration {
   readonly password: string;
 
   /** Password confirmation. */
-  readonly passwordConfirm: string;
+  readonly confirmPassword: string;
 }
