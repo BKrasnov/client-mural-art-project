@@ -1,4 +1,4 @@
-import { memo, FC } from "react";
+import { memo, FC, useCallback } from "react";
 import { Link } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "src/store";
@@ -6,9 +6,11 @@ import { authLogin } from "src/store/auth/dispatchers";
 import { selectLoginError } from "src/store/auth/selectors";
 
 import { initialFormValues, LoginSchema, LoginFormValue } from "./formSettings";
-import { Field, FormikProvider, useFormik } from "formik";
+import { FormikProvider, useFormik, Form } from "formik";
 
 import { FormHelperText } from "@mui/material";
+import { UiButton } from "@components/UI";
+import { FormikTextField } from "@components/FormikTextField";
 
 import styles from "./LoginForm.module.css";
 
@@ -21,10 +23,14 @@ const LoginFormComponent: FC = () => {
    * Handles form submit.
    * @param loginData Login data.
    */
-  const handleSubmitForm = (loginData: LoginFormValue) => {
-    dispatch(authLogin(loginData));
-    formik.setSubmitting(false);
-  };
+  const handleSubmitForm = useCallback(
+    async (loginData: LoginFormValue) => {
+      dispatch(authLogin(loginData));
+      formik.setSubmitting(false);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [dispatch]
+  );
 
   const formik = useFormik({
     initialValues: initialFormValues,
@@ -34,18 +40,22 @@ const LoginFormComponent: FC = () => {
 
   return (
     <>
-      <h2>Авторизация пользователя</h2>
+      <h2>
+        <span>Login to profile</span>
+      </h2>
       <FormikProvider value={formik}>
-        <form onSubmit={formik.handleSubmit} className={styles.loginForm}>
-          <Field className={styles.loginForm__input} name="email" placeholder="Почта" label="Email" type="email" required />
-          <Field className={styles.loginForm__input} name="password" placeholder="Пароль" label="Password" type="password" required />
+        <Form className={styles.loginForm}>
+          <FormikTextField name="email" type="email" placeholder="Email" />
+          <FormikTextField name="password" type="password" placeholder="Password" />
           <FormHelperText error>{loginError}</FormHelperText>
-          <button type="submit">Войти</button>
-        </form>
+          <UiButton>Log in</UiButton>
+        </Form>
       </FormikProvider>
-      <span>
-        Нет аккаунта? <Link to="/auth/registration">Регистрация</Link>
-      </span>
+      <div>
+        <span>
+          Don't have an account? <Link to="/auth/registration">Registration</Link>
+        </span>
+      </div>
     </>
   );
 };
