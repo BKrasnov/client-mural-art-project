@@ -29,6 +29,11 @@ li {
 
 button {
   font: inherit;
+  border: none;
+}
+
+input {
+  border: none;
 }
 
 p {
