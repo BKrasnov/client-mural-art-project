@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { Registration } from "@core/models";
-import { AppError } from "@core/models/errors/app-error";
-import { FormError } from "@core/models/errors/form-error";
+import { Login, Registration, AppError, FormError } from "@core/models";
 
 import { authLogin, authLogout, authRegister, getUserFromCache } from "./dispatchers";
 import { initialState } from "./state";
@@ -22,7 +20,7 @@ const authSlice = createSlice({
         state.isSubmitted = true;
       })
       .addCase(authLogin.rejected, (state, action) => {
-        state.loginError = action.error.message;
+        state.loginError = action.payload as AppError<FormError<Login>>;
         state.isLoading = false;
         state.isSubmitted = false;
       })

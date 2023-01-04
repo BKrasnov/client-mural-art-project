@@ -1,4 +1,4 @@
-import { Registration, User, AppError, FormError } from "@core/models";
+import { Registration, User, AppError, FormError, Login } from "@core/models";
 
 /** Auth state. */
 export interface AuthState {
@@ -6,7 +6,7 @@ export interface AuthState {
   readonly isLoading: boolean;
 
   /** Error message. */
-  readonly loginError?: string;
+  readonly loginError?: AppError<FormError<Login>>;
 
   /** Error message. */
   readonly registerError?: AppError<FormError<Registration>>;
@@ -20,7 +20,6 @@ export interface AuthState {
 
 export const initialState: AuthState = {
   isLoading: false,
-  loginError: undefined,
   user: null,
   isSubmitted: false,
 };

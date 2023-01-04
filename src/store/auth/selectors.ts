@@ -31,14 +31,11 @@ export const selectIsAuthSubmitted = createSelector(
 /** Selects auth error state. */
 export const selectLoginError = createSelector(
   (state: RootState) => state.auth.loginError,
-  error => error
+  error => getFirebaseError(error?.code)
 );
 
 /** Selects auth error state. */
 export const selectRegisterError = createSelector(
   (state: RootState) => state.auth.registerError,
-  error => {
-    const message = getFirebaseError(error?.code)
-    return message;
-  }
+  error => getFirebaseError(error?.code)
 );
