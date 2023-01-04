@@ -6,7 +6,7 @@ import { authRegister } from "src/store/auth/dispatchers";
 import { selectIsAuthSubmitted, selectRegisterError } from "src/store/auth/selectors";
 
 import { initialFormValues, RegisterSchema, RegistrationFormValue } from "./formSettings";
-import { Field, FormikProvider, useFormik } from "formik";
+import { Field, FormikProvider, useFormik, Form, ErrorMessage } from "formik";
 
 import { FormHelperText } from "@mui/material";
 
@@ -44,51 +44,52 @@ const RegistrationFormComponent: FC = () => {
       navigate("/personal-area/profile");
     }
   }, [isFormSubmitted, navigate]);
-
   return (
     <>
       <div className={styles.wrapper}>
-        <h2>Регистрация пользователя</h2>
+        <h2>
+          <span>User registration </span>
+        </h2>
         <FormikProvider value={formik}>
-          <form onSubmit={formik.handleSubmit} className={styles.registerForm}>
+          <Form className={styles.registerForm}>
             <Field
               className={styles.registerForm__input}
               name="email"
-              placeholder="Почта"
-              label="Email"
+              placeholder="Email"
               type="email"
               required
             />
+            <ErrorMessage component="div" name="email" className={styles.errorMessage} />
             <Field
               className={styles.registerForm__input}
               name="nickname"
-              placeholder="Введите никнейм"
-              label="NickName"
+              placeholder="Nickname"
               type="text"
               required
             />
+            <ErrorMessage component="div" name="nickname" className={styles.errorMessage} />
             <Field
               className={styles.registerForm__input}
               name="password"
-              placeholder="Пароль"
-              label="Password"
+              placeholder="Password"
               type="password"
               required
             />
+            <ErrorMessage component="div" name="password" className={styles.errorMessage} />
             <Field
               className={styles.registerForm__input}
-              name="passwordConfirm"
-              placeholder="Повторите пароль"
-              label="Password"
+              name="confirmPassword"
+              placeholder="Confirm password"
               type="password"
               required
             />
+            <ErrorMessage component="div" name="confirmPassword" className={styles.errorMessage} />
             <FormHelperText error>{registerError}</FormHelperText>
-            <button type="submit">Регистрация</button>
-          </form>
+            <button type="submit" className={styles.buttonForm}>Register</button>
+          </Form>
         </FormikProvider>
         <span>
-          Есть аккаунт? <Link to="/auth/login"> Войти</Link>
+          Already have an account? <Link to="/auth/login">Log In</Link>
         </span>
       </div>
     </>

@@ -1,16 +1,24 @@
+.wrapper {
+  max-width: 500px;
+  padding: 20px 30px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--tertiary-color);
+}
+
 .registerForm {
   padding: 10px;
-  max-width: 450px;
-  margin: 0 auto;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
 }
 
 .registerForm__input {
-  border: none;
-  border-bottom: 2px solid #d1d1d4;
   padding: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+
+  border-bottom: 2px solid #d1d1d4;
   transition: 0.2s;
 }
 
@@ -18,5 +26,25 @@
 .registerForm__input:focus,
 .registerForm__input:hover {
   outline: none;
-  border-bottom-color: #6a679e;
+  border-bottom-color: var(--primary-color);
+}
+
+.errorMessage {
+  text-align: left;
+  color: var(--error-color);
+  font-size: var(--font-size-xs);
+  margin-bottom: 5px;
+}
+
+.buttonForm {
+  padding: 10px 40px;
+  border-radius: 10px;
+  font-weight: 700; 
+  color: var(--primary-contrast-color);
+  background-color: var(--primary-color);
+  transition: 0.1s;
+}
+
+.buttonForm:active {
+  color: var(--secondary-color);
 }
