@@ -1,9 +1,19 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { CaseReducer, createSlice } from "@reduxjs/toolkit";
 
 import { Login, Registration, AppError, FormError } from "@core/models";
 
 import { authLogin, authLogout, authRegister, getUserFromCache } from "./dispatchers";
-import { initialState } from "./state";
+import { AuthState, initialState } from "./state";
+
+const pendingReducer: CaseReducer<AuthState> = state => {
+  state.isLoading = true;
+};
+
+const fulfilledAuthReducer: CaseReducer<AuthState> = (state, action) => {
+  state.user = action.payload;
+  state.isLoading = false;
+  state.isSubmitted = true;
+};
 
 const authSlice = createSlice({
   name: "auth",
@@ -11,46 +21,28 @@ const authSlice = createSlice({
   reducers: {},
   extraReducers: builder =>
     builder
-      .addCase(authLogin.pending, state => {
-        state.isLoading = true;
-      })
-      .addCase(authLogin.fulfilled, (state, action) => {
-        state.user = action.payload;
-        state.isLoading = false;
-        state.isSubmitted = true;
-      })
+      .addCase(authLogin.pending, pendingReducer)
+      .addCase(authLogin.fulfilled, fulfilledAuthReducer)
       .addCase(authLogin.rejected, (state, action) => {
         state.loginError = action.payload as AppError<FormError<Login>>;
         state.isLoading = false;
-        state.isSubmitted = false;
       })
 
-      .addCase(authRegister.pending, state => {
-        state.isLoading = true;
-      })
-      .addCase(authRegister.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSubmitted = true;
-        state.user = action.payload;
-      })
+      .addCase(authRegister.pending, pendingReducer)
+      .addCase(authRegister.fulfilled, fulfilledAuthReducer)
       .addCase(authRegister.rejected, (state, action) => {
         state.registerError = action.payload as AppError<FormError<Registration>>;
         state.isLoading = false;
-        state.isSubmitted = false;
       })
 
-      .addCase(authLogout.pending, state => {
-        state.isLoading = true;
-      })
+      .addCase(authLogout.pending, pendingReducer)
       .addCase(authLogout.fulfilled, state => {
         state.user = null;
         state.isLoading = false;
         state.isSubmitted = false;
       })
 
-      .addCase(getUserFromCache.pending, state => {
-        state.isLoading = true;
-      })
+      .addCase(getUserFromCache.pending, pendingReducer)
       .addCase(getUserFromCache.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoading = false;
