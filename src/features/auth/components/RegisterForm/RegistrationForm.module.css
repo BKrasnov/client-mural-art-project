@@ -8,43 +8,7 @@
 }
 
 .registerForm {
-  padding: 10px;
   margin: 20px auto;
   display: flex;
   flex-direction: column;
-}
-
-.registerForm__input {
-  padding: 10px;
-  margin-bottom: 5px;
-
-  border-bottom: 2px solid #d1d1d4;
-  transition: 0.2s;
-}
-
-.registerForm__input:active,
-.registerForm__input:focus,
-.registerForm__input:hover {
-  outline: none;
-  border-bottom-color: var(--primary-color);
-}
-
-.errorMessage {
-  text-align: left;
-  color: var(--error-color);
-  font-size: var(--font-size-xs);
-  margin-bottom: 5px;
-}
-
-.buttonForm {
-  padding: 10px 40px;
-  border-radius: 10px;
-  font-weight: 700; 
-  color: var(--primary-contrast-color);
-  background-color: var(--primary-color);
-  transition: 0.1s;
-}
-
-.buttonForm:active {
-  color: var(--secondary-color);
 }

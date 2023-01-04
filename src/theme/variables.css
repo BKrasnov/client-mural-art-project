@@ -5,11 +5,12 @@
   --secondary-color: #f35d9b;
 
   --tertiary-color: #6b6b6b;
+  --tertiaty-lite-color: #d1d1d4;
 
   --primary-contrast-color: white;
 
   /* Auxiliary colors*/
-  --error-color: #ff0000;
+  --error-color: #9b211b;
 
   /* Font size */
   --font-size-xxl: 60px;
