@@ -1,4 +1,4 @@
-import { User } from "@core/models";
+import { Registration, User, AppError, FormError } from "@core/models";
 
 /** Auth state. */
 export interface AuthState {
@@ -9,7 +9,7 @@ export interface AuthState {
   readonly loginError?: string;
 
   /** Error message. */
-  readonly registerError?: string;
+  readonly registerError?: AppError<FormError<Registration>>;
 
   /** Currently signed in user. */
   readonly user: User | null;
