@@ -3,17 +3,17 @@ import { UserMapper } from "@core/mappers";
 
 import { UserService, FirebaseService } from "./index";
 
-/** @todo Remove the service and change it to its own API  */
+/** @todo Remove the Firebase service and change it to its own API  */
 export namespace AuthService {
   /**
    * Registers an account.
    * @param registrationData Data required for registration.
    */
   export async function register(registrationData: Registration): Promise<User | null> {
-    const { email, password } = registrationData;
+    const { email, password, nickname } = registrationData;
     try {
       const userCredential = await FirebaseService.createUser(email, password);
-      const user = UserMapper.fromUserDto(userCredential.user);
+      const user = UserMapper.fromUserDto(userCredential.user, nickname);
       await UserService.addUser(user);
       return user;
     } catch (error) {

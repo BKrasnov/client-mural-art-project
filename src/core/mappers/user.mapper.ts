@@ -8,13 +8,14 @@ export namespace UserMapper {
    * @todo Fix the "as User" type cast. It is possible to do "new User"?
    * @param dto User dto.
    */
-  export function fromUserDto(dto: UserFirebase): User {
+  export function fromUserDto(dto: UserFirebase, ...registerData: string[]): User {
+    const [nickname] = registerData;
     return {
       id: dto.uid,
       email: dto.email,
       firstName: dto.displayName,
       lastName: null,
-      nickName: null,
+      nickName: nickname,
       emailVerified: dto.emailVerified,
       phoneNumber: dto.phoneNumber,
       avatar: dto.photoURL,
