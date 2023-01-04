@@ -17,7 +17,7 @@ import styles from "./RegistrationForm.module.css";
 const RegistrationFormComponent: FC = () => {
   const dispatch = useAppDispatch();
 
-  const registerError = useAppSelector(selectRegisterError);
+  const registrationError = useAppSelector(selectRegisterError);
   const isFormSubmitted = useAppSelector(selectIsAuthSubmitted);
 
   const navigate = useNavigate();
@@ -46,27 +46,26 @@ const RegistrationFormComponent: FC = () => {
       navigate("/personal-area/profile");
     }
   }, [isFormSubmitted, navigate]);
+
   return (
     <>
-      <div className={styles.wrapper}>
-        <h2>
-          <span>User registration</span>
-        </h2>
-        <FormikProvider value={formik}>
-          <Form className={styles.registerForm}>
-            <FormikTextField name="email" type="email" placeholder="Email" />
-            <FormikTextField name="nickname" type="text" placeholder="Nickname" />
-            <FormikTextField name="password" type="password" placeholder="Password" />
-            <FormikTextField name="confirmPassword" type="password" placeholder="Confirm password" />
-            <FormHelperText error>{registerError}</FormHelperText>
-            <UiButton>Register</UiButton>
-          </Form>
-        </FormikProvider>
-        <div>
-          <span>
-            Already have an account? <Link to="/auth/login">Log In</Link>
-          </span>
-        </div>
+      <h2>
+        <span>User registration</span>
+      </h2>
+      <FormikProvider value={formik}>
+        <Form className={styles.registerForm}>
+          <FormikTextField name="email" type="email" placeholder="Email" />
+          <FormikTextField name="nickname" type="text" placeholder="Nickname" />
+          <FormikTextField name="password" type="password" placeholder="Password" />
+          <FormikTextField name="confirmPassword" type="password" placeholder="Confirm password" />
+          <FormHelperText error>{registrationError}</FormHelperText>
+          <UiButton>Register</UiButton>
+        </Form>
+      </FormikProvider>
+      <div>
+        <span>
+          Already have an account? <Link to="/auth/login">Log In</Link>
+        </span>
       </div>
     </>
   );

@@ -9,7 +9,7 @@ const MIN_NICKNAME_LENGTH = 5;
 
 const passwordPattern = /^.*(?=.{6,})(?=.*[a-zA-Z])(?=.*\d)/;
 
-/** Login form. */
+/** Registration form. */
 export type RegistrationFormValue = Registration;
 
 export const initialFormValues: RegistrationFormValue = {
