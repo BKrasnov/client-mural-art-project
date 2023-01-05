@@ -17,6 +17,9 @@ export class User extends Immerable {
   /** Last name. */
   public readonly lastName: string | null;
 
+  /** User sex. */
+  public readonly sex: string | null;
+
   /** URL to avatar image. */
   public readonly avatar: string | null;
 
@@ -33,6 +36,7 @@ export class User extends Immerable {
     this.nickName = data.nickName;
     this.firstName = data.firstName;
     this.lastName = data.lastName;
+    this.sex = data.sex;
     this.avatar = data.avatar;
     this.phoneNumber = data.phoneNumber;
     this.emailVerified = data.emailVerified;

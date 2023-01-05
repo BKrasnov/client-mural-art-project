@@ -43,7 +43,7 @@ const RegistrationFormComponent: FC = () => {
 
   useEffect(() => {
     if (isFormSubmitted) {
-      navigate("/personal-area/profile");
+      navigate("auth/profile");
     }
   }, [isFormSubmitted, navigate]);
 
