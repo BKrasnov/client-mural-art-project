@@ -6,11 +6,15 @@ export enum FormValidationError {
   passwordsDontMatch = "Passwords dont match",
 }
 
-/** Error messages. */
+/** Error message. */
 export enum FormMessageError {
   email = "Email is required",
-  nickname = 'Nickname is required',
-  password = 'Password is required',
-  passwordConfirm = 'Password confirm is required',
-  passwordPattern = 'Password must contain both letters and numbers',
+  nickname = "Nickname is required",
+  firstName = "First name is required",
+  lastName = "Last name is required",
+  password = "Password is required",
+  passwordConfirm = "Password confirm is required",
+  passwordPattern = "Password must contain both letters and numbers",
+  phonePattern = "Phone number must contain only numbers",
+  namePattern = "Name must contain only letters",
 }
