@@ -2,12 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 import authReducer from "./auth/slice";
+import userReduce from "./user/slice";
 import muralReducer from "./murals/slice";
 import muralDetailsReducer from "./muralDetails/slice";
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
+    user: userReduce,
     murals: muralReducer,
     muralDetails: muralDetailsReducer,
   },
