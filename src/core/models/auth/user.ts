@@ -5,6 +5,9 @@ export class User extends Immerable {
   /** User uid */
   public readonly id: string;
 
+  /** User document id. */
+  public readonly docId: string;
+
   /** User email. */
   public readonly email: string;
 
@@ -32,6 +35,7 @@ export class User extends Immerable {
   public constructor(data: InitArgsUser) {
     super();
     this.id = data.id;
+    this.docId = data.docId;
     this.email = data.email;
     this.nickName = data.nickName;
     this.firstName = data.firstName;
