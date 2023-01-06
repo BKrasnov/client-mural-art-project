@@ -1,6 +1,6 @@
 import { User as UserFirebase } from "firebase/auth";
 
-import { User } from "@core/models";
+import { User, Profile } from "@core/models";
 
 export namespace UserMapper {
   /**
@@ -12,6 +12,7 @@ export namespace UserMapper {
     const [nickname] = registerData;
     return {
       id: dto.uid,
+      docId: "",
       email: dto.email,
       firstName: dto.displayName,
       lastName: null,
@@ -19,6 +20,20 @@ export namespace UserMapper {
       emailVerified: dto.emailVerified,
       phoneNumber: dto.phoneNumber,
       avatar: dto.photoURL,
+    } as User;
+  }
+
+  export function fromUserToProfile(user: User, profile: Profile): User {
+    return {
+      id: user.id,
+      docId: user.docId,
+      email: user.email,
+      firstName: profile.firstName,
+      lastName: profile.firstName,
+      nickName: user.nickName,
+      emailVerified: user.emailVerified,
+      phoneNumber: profile.phoneNumber,
+      avatar: user.avatar,
     } as User;
   }
 }
