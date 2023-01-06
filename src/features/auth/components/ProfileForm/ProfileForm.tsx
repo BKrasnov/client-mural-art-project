@@ -1,19 +1,24 @@
-import { memo, FC, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { memo, FC, useCallback, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "src/store";
+import { userUpdate } from "src/store/user/dispatchers";
+import { selectIsUpdateUser } from "src/store/user/selectors";
 
-import { initialFormValues, ProfileFormValue, ProfileEditSchema} from "./formSettings";
+import { initialFormValues, ProfileFormValue, ProfileEditSchema } from "./formSettings";
 import { FormikProvider, useFormik, Form } from "formik";
 
 import { UiButton } from "@components/UI";
 import { FormikTextField } from "@components/FormikTextField";
 
 import styles from "./ProfileForm.module.css";
-import { userUpdate } from "src/store/user/dispatchers";
 
 const ProfileFormComponent: FC = () => {
   const dispatch = useAppDispatch();
+
+  const isFormSubmitted = useAppSelector(selectIsUpdateUser);
+
+  const navigate = useNavigate();
 
   /**
    * Handles form submit.
@@ -34,6 +39,12 @@ const ProfileFormComponent: FC = () => {
     onSubmit: handleSubmitForm,
   });
 
+  useEffect(() => {
+    if (isFormSubmitted) {
+      navigate("/personal-area/profile");
+    }
+  }, [isFormSubmitted, navigate]);
+  
   return (
     <>
       <h2>
@@ -44,7 +55,7 @@ const ProfileFormComponent: FC = () => {
           <FormikTextField name="firstName" type="text" placeholder="First name" />
           <FormikTextField name="lastName" type="text" placeholder="Last name" />
           <FormikTextField name="sex" type="text" placeholder="Sex" />
-          {/* <FormikTextField name="phoneNumber" type="text" placeholder="phoneNumber" /> */}
+          <FormikTextField name="phoneNumber" type="text" placeholder="Phone number" />
           <UiButton>Continue</UiButton>
         </Form>
       </FormikProvider>

@@ -10,5 +10,5 @@ export interface Profile {
   readonly sex: string;
 
   /** User phone number */
-  // readonly phoneNumber: string | undefined;
+  readonly phoneNumber?: string;
 }

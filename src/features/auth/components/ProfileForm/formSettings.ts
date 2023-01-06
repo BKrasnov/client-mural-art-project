@@ -18,28 +18,29 @@ export const initialFormValues: ProfileFormValue = {
   firstName: "",
   lastName: "",
   sex: "",
-  // phoneNumber: "",
+  phoneNumber: "",
 };
 
-export const ProfileEditSchema: yup.SchemaOf<ProfileFormValue> = yup.object({
-  firstName: yup
-    .string()
-    .matches(namePattern, FormMessageError.namePattern)
-    .min(MIN_NAME_LENGTH)
-    .required(FormMessageError.firstName),
-  lastName: yup
-    .string()
-    .matches(namePattern, FormMessageError.namePattern)
-    .min(MIN_NAME_LENGTH)
-    .required(FormMessageError.lastName),
-  sex: yup.string().required(),
-  // phoneNumber: yup.string().when("phoneNumber", val => {
-  //   if (val) {
-  //     if (val.length > 0) {
-  //       return yup.string().matches(phonePattern, FormMessageError.phonePattern).required("Required");
-  //     }
-  //     return yup.string().notRequired();
-  //   }
-  //   return yup.string().notRequired();
-  // }),
-});
+export const ProfileEditSchema: yup.SchemaOf<ProfileFormValue> = yup.object().shape(
+  {
+    firstName: yup
+      .string()
+      .matches(namePattern, FormMessageError.namePattern)
+      .min(MIN_NAME_LENGTH)
+      .required(FormMessageError.firstName),
+    lastName: yup
+      .string()
+      .matches(namePattern, FormMessageError.namePattern)
+      .min(MIN_NAME_LENGTH)
+      .required(FormMessageError.lastName),
+    sex: yup.string().required(),
+    phoneNumber: yup.string().when("phoneNumber", value => {
+        if (value) {
+          return yup.string().matches(phonePattern, FormMessageError.phonePattern).required("Required");
+        } else {
+          return yup.string().notRequired();
+        }
+    }),
+  },
+  [["phoneNumber", "phoneNumber"]]
+);
