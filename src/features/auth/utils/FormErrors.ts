@@ -15,6 +15,7 @@ export enum FormMessageError {
   password = "Password is required",
   passwordConfirm = "Password confirm is required",
   passwordPattern = "Password must contain both letters and numbers",
-  phonePattern = "Phone number must contain only numbers",
+  phoneNumber = "Please fill in your phone number",
+  phonePattern = "The phone number must contain only numbers, six or more",
   namePattern = "Name must contain only letters",
 }
