@@ -10,7 +10,7 @@ import { FormikProvider, useFormik, Form } from "formik";
 
 import { FormHelperText } from "@mui/material";
 import { UiButton } from "@components/UI";
-import { FormikTextField } from "@components/FormikTextField";
+import { FormikControl } from "@components/FormikControl";
 
 import styles from "./LoginForm.module.css";
 
@@ -45,8 +45,8 @@ const LoginFormComponent: FC = () => {
       </h2>
       <FormikProvider value={formik}>
         <Form className={styles.loginForm}>
-          <FormikTextField name="email" type="email" placeholder="Email" />
-          <FormikTextField name="password" type="password" placeholder="Password" />
+          <FormikControl control="input" name="email" type="email" placeholder="Email" />
+          <FormikControl control="input" name="password" type="password" placeholder="Password" />
           <FormHelperText error>{loginError}</FormHelperText>
           <UiButton>Log in</UiButton>
         </Form>
