@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
 
-import styles from "./HeaderForm.module.css";
+import styles from "./Header.module.css";
 
 export const HeaderForm: FC = () => {
   return (
