@@ -17,7 +17,7 @@ export type ProfileFormValue = Profile;
 export const initialFormValues: ProfileFormValue = {
   firstName: "",
   lastName: "",
-  sex: "",
+  occupation: "",
   phoneNumber: "",
 };
 
@@ -33,13 +33,16 @@ export const ProfileEditSchema: yup.SchemaOf<ProfileFormValue> = yup.object().sh
       .matches(namePattern, FormMessageError.namePattern)
       .min(MIN_NAME_LENGTH)
       .required(FormMessageError.lastName),
-    sex: yup.string().required(),
+    occupation: yup.string().required(FormMessageError.occupation),
     phoneNumber: yup.string().when("phoneNumber", value => {
-        if (value) {
-          return yup.string().matches(phonePattern, FormMessageError.phonePattern).required("Required");
-        } else {
-          return yup.string().notRequired();
-        }
+      if (value) {
+        return yup
+          .string()
+          .matches(phonePattern, FormMessageError.phonePattern)
+          .required("Required");
+      } else {
+        return yup.string().notRequired();
+      }
     }),
   },
   [["phoneNumber", "phoneNumber"]]
