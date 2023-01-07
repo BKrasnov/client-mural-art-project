@@ -1,0 +1,32 @@
+.fieldWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.fieldWrapper__input,
+.fieldWrapper__select {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border-bottom: 2px solid var(--tertiaty-lite-color);
+  transition: 0.2s;
+}
+
+.fieldWrapper__input:active,
+.fieldWrapper__select:active,
+.fieldWrapper__input:focus,
+.fieldWrapper__select:focus,
+.fieldWrapper__input:hover,
+.fieldWrapper__select:hover {
+  outline: none;
+  border-bottom-color: var(--primary-color);
+}
+
+.fieldError {
+  text-align: left;
+  color: var(--error-color);
+  font-size: var(--font-size-xs);
+  margin-top: 3px;
+  transition: 0.2s;
+}
