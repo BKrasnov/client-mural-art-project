@@ -6,8 +6,8 @@ export interface Profile {
   /** Last name. */
   readonly lastName: string;
 
-  /** User sex. */
-  readonly sex: string;
+  /** User occupation. */
+  readonly occupation: string;
 
   /** User phone number */
   readonly phoneNumber?: string;
