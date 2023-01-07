@@ -1,5 +1,5 @@
-import { memo, FC, useEffect, useCallback } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { memo, FC, useCallback } from "react";
+import { Link } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "src/store";
 import { authRegister } from "src/store/auth/dispatchers";
@@ -12,15 +12,17 @@ import { FormHelperText } from "@mui/material";
 import { UiButton } from "@components/UI";
 import { FormikTextField } from "@components/FormikTextField";
 
+import useSubmitForm from "@core/hooks/useSubmitForm";
+
 import styles from "./RegistrationForm.module.css";
+
+const URL_AUTH_PROFILE = "/auth/profile";
 
 const RegistrationFormComponent: FC = () => {
   const dispatch = useAppDispatch();
 
   const registrationError = useAppSelector(selectRegisterError);
   const isFormSubmitted = useAppSelector(selectIsAuthSubmitted);
-
-  const navigate = useNavigate();
 
   /**
    * Handles form submit.
@@ -41,11 +43,7 @@ const RegistrationFormComponent: FC = () => {
     onSubmit: handleSubmitForm,
   });
 
-  useEffect(() => {
-    if (isFormSubmitted) {
-      navigate("auth/profile");
-    }
-  }, [isFormSubmitted, navigate]);
+  useSubmitForm(isFormSubmitted, URL_AUTH_PROFILE);
 
   return (
     <>
