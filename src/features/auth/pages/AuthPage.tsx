@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 import { Outlet } from "react-router-dom";
 
-import { HeaderForm } from "../components/HeaderForm";
+import { HeaderForm } from "../components/Header";
 
 import styles from "./AuthPage.module.css";
 

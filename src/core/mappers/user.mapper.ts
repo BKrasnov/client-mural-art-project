@@ -31,6 +31,7 @@ export namespace UserMapper {
       firstName: profile.firstName,
       lastName: profile.firstName,
       nickName: user.nickName,
+      occupation: profile.occupation,
       emailVerified: user.emailVerified,
       phoneNumber: profile.phoneNumber,
       avatar: user.avatar,

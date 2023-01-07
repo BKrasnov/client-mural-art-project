@@ -30,9 +30,10 @@ button {
   border: none;
 }
 
-input {
+input, select, textarea {
   border: none;
 }
+
 
 p {
   text-align: left;

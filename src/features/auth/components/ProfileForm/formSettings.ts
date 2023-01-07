@@ -2,7 +2,7 @@ import * as yup from "yup";
 
 import { Profile } from "@core/models";
 
-import { FormMessageError } from "../../utils/FormErrors";
+import { FormMessageError, FormValidationError } from "../../utils/FormErrors";
 
 const MIN_NAME_LENGTH = 2;
 
@@ -26,12 +26,12 @@ export const ProfileEditSchema: yup.SchemaOf<ProfileFormValue> = yup.object().sh
     firstName: yup
       .string()
       .matches(namePattern, FormMessageError.namePattern)
-      .min(MIN_NAME_LENGTH)
+      .min(MIN_NAME_LENGTH, FormValidationError.tooShortFirstName)
       .required(FormMessageError.firstName),
     lastName: yup
       .string()
       .matches(namePattern, FormMessageError.namePattern)
-      .min(MIN_NAME_LENGTH)
+      .min(MIN_NAME_LENGTH, FormValidationError.tooShortLastName)
       .required(FormMessageError.lastName),
     occupation: yup.string().required(FormMessageError.occupation),
     phoneNumber: yup.string().when("phoneNumber", value => {
@@ -39,7 +39,7 @@ export const ProfileEditSchema: yup.SchemaOf<ProfileFormValue> = yup.object().sh
         return yup
           .string()
           .matches(phonePattern, FormMessageError.phonePattern)
-          .required("Required");
+          .required(FormMessageError.phoneNumber);
       } else {
         return yup.string().notRequired();
       }
