@@ -19,7 +19,7 @@ import styles from "./ProfileForm.module.css";
 const URL_PERSONAL_AREA_PROFILE = "/personal-area/profile";
 
 const optionItems: OptionsSelect[] = [
-  { key: "Occupation", value: "Your occupation?", disabled: true },
+  { key: "Occupation", value: "Your occupation?"},
   { key: "Artist", value: "Artist" },
   { key: "Customer", value: "Customer" },
 ];
@@ -60,7 +60,7 @@ const ProfileFormComponent: FC = () => {
           <FormikControl control="input" name="firstName" type="text" placeholder="First name" />
           <FormikControl control="input" name="lastName" type="text" placeholder="Last name" />
           <FormikControl control="input" name="phoneNumber" type="tel" placeholder="Phone number" />
-          <FormikControl control="select" name="occupation" options={optionItems} type="select" />
+          <FormikControl control="select" name="occupation" options={optionItems}/>
           <UiButton>Continue</UiButton>
         </Form>
       </FormikProvider>

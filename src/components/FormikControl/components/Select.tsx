@@ -18,7 +18,7 @@ export const Select: FC<FieldHookConfig<string> & SelectProps> = ({ options, ...
       required
     >
       {options?.map(option => (
-        <option key={option.key} value={option.value} disabled={option.disabled}>
+        <option key={option.key} value={option.value}>
           {option.value}
         </option>
       ))}

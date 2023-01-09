@@ -31,7 +31,7 @@ export const FormikControl: FC<FieldHookConfig<string> & FieldSettings> = ({ con
     case "select":
       return (
         <div className={styles.fieldWrapper}>
-          <Select options={options} type={props.type} className={styles.fieldWrapper__select} {...field} />
+          <Select options={options} type="select" className={styles.fieldWrapper__select} {...field} />
           <ErrorMessage component="span" name={field.name} className={styles.fieldError} />
         </div>
       );
