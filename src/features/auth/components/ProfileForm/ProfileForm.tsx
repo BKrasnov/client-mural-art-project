@@ -1,8 +1,8 @@
 import { memo, FC, useCallback } from "react";
 
 import { useAppDispatch, useAppSelector } from "src/store";
-import { userUpdate } from "src/store/user/dispatchers";
-import { selectIsUpdateUser } from "src/store/user/selectors";
+import { selectIsProfileSubmitted } from "src/store/auth/selectors";
+import { authProfile } from "src/store/auth/dispatchers";
 
 import useSubmitForm from "@core/hooks/useSubmitForm";
 
@@ -27,7 +27,7 @@ const optionItems: OptionsSelect[] = [
 const ProfileFormComponent: FC = () => {
   const dispatch = useAppDispatch();
 
-  const isFormSubmitted = useAppSelector(selectIsUpdateUser);
+  const isSubmittedProfile = useAppSelector(selectIsProfileSubmitted);
 
   /**
    * Handles form submit.
@@ -35,7 +35,7 @@ const ProfileFormComponent: FC = () => {
    */
   const handleSubmitForm = useCallback(
     async (profile: ProfileFormValue) => {
-      dispatch(userUpdate(profile));
+      dispatch(authProfile(profile));
       formik.setSubmitting(false);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -48,7 +48,7 @@ const ProfileFormComponent: FC = () => {
     onSubmit: handleSubmitForm,
   });
 
-  useSubmitForm(isFormSubmitted, URL_PERSONAL_AREA_PROFILE);
+  useSubmitForm(isSubmittedProfile, URL_PERSONAL_AREA_PROFILE);
 
   return (
     <>
