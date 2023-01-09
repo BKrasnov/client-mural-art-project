@@ -1,4 +1,13 @@
-.wrapper {
+.container {
   text-align: center;
-  margin-top: 30vh;
+  margin-top: 10vh;
+}
+
+.wrapperForm {
+  max-width: 500px;
+  padding: 20px 30px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--tertiary-color);
 }

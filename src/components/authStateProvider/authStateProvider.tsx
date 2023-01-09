@@ -7,6 +7,7 @@ import { selectIsAuthLoading } from "src/store/auth/selectors";
 
 import { Loader } from "@components/Loader";
 
+/** Check if the user is authorized to access the cache.  */
 const AuthStateProviderComponent = () => {
   const dispatch = useAppDispatch();
   const isLoading = useAppSelector(selectIsAuthLoading);

@@ -1,5 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 
+import { getFirebaseError } from "src/features/auth/utils/firebaseErrors";
+
 import { RootState } from "src/store";
 
 /** Selects a user from a state. */
@@ -21,19 +23,19 @@ export const selectIsAuthLoading = createSelector(
 );
 
 /** Selects auth submit state. */
-export const selectIsAuthSubmitted = createSelector(
-  (state: RootState) => state.auth.isSubmitted,
-  isSubmitted => isSubmitted,
+export const selectIsProfileSubmitted = createSelector(
+  (state: RootState) => state.auth.isSubmittedProfile,
+  isSubmittedProfile => isSubmittedProfile,
 );
 
 /** Selects auth error state. */
 export const selectLoginError = createSelector(
   (state: RootState) => state.auth.loginError,
-  error => error
+  error => getFirebaseError(error?.code)
 );
 
 /** Selects auth error state. */
 export const selectRegisterError = createSelector(
   (state: RootState) => state.auth.registerError,
-  error => error
+  error => getFirebaseError(error?.code)
 );

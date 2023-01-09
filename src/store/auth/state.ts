@@ -1,4 +1,4 @@
-import { User } from "@core/models";
+import { Registration, User, AppError, FormError, Login } from "@core/models";
 
 /** Auth state. */
 export interface AuthState {
@@ -6,21 +6,20 @@ export interface AuthState {
   readonly isLoading: boolean;
 
   /** Error message. */
-  readonly loginError?: string;
+  readonly loginError?: AppError<FormError<Login>>;
 
   /** Error message. */
-  readonly registerError?: string;
+  readonly registerError?: AppError<FormError<Registration>>;
 
   /** Currently signed in user. */
   readonly user: User | null;
 
-  /** Whether it has been submitted or not.. */
-  readonly isSubmitted: boolean;
+  /** The user has updated their profile. */
+  readonly isSubmittedProfile: boolean;
 }
 
 export const initialState: AuthState = {
   isLoading: false,
-  loginError: undefined,
   user: null,
-  isSubmitted: false,
+  isSubmittedProfile: false,
 };

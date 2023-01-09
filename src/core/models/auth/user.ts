@@ -5,18 +5,23 @@ export class User extends Immerable {
   /** User uid */
   public readonly id: string;
 
+  /** User document id. */
+  public readonly docId: string;
+
   /** User email. */
-  /** Email of the user. Can be null since Firebase user doesn't necessarily contain an email. */
-  public readonly email: string | null;
+  public readonly email: string;
 
   /** Nick name user. */
-  public readonly nickName: string | null;
+  public readonly nickName: string;
 
   /** First name. */
   public readonly firstName: string | null;
 
   /** Last name. */
   public readonly lastName: string | null;
+
+  /** User occupation. */
+  public readonly occupation: string | null;
 
   /** URL to avatar image. */
   public readonly avatar: string | null;
@@ -30,10 +35,12 @@ export class User extends Immerable {
   public constructor(data: InitArgsUser) {
     super();
     this.id = data.id;
+    this.docId = data.docId;
     this.email = data.email;
     this.nickName = data.nickName;
     this.firstName = data.firstName;
     this.lastName = data.lastName;
+    this.occupation = data.occupation;
     this.avatar = data.avatar;
     this.phoneNumber = data.phoneNumber;
     this.emailVerified = data.emailVerified;

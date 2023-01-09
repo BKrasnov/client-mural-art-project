@@ -5,8 +5,12 @@
   --secondary-color: #f35d9b;
 
   --tertiary-color: #6b6b6b;
+  --tertiaty-lite-color: #d1d1d4;
 
   --primary-contrast-color: white;
+
+  /* Auxiliary colors*/
+  --error-color: #9b211b;
 
   /* Font size */
   --font-size-xxl: 60px;
@@ -14,6 +18,7 @@
   --font-size-l: 24px;
   --font-size-m: 20px;
   --font-size-s: 16px;
+  --font-size-xs: 12px;
 
   /* Font family */
   --font-family-graffiti-theme: "Jack Brusher(RUS BY LYAJKA)";

@@ -3,12 +3,12 @@ export class AppError<T> extends Error {
   /** Fields errors. */
   public readonly data?: T;
 
-  /** Error Description. */
-  public readonly detail?: string;
+  /** Code error Firebase. */
+  public readonly code?: string;
 
-  public constructor(data?: T, detail?: string) {
+  public constructor(data?: T, code?: string) {
     super();
     this.data = data;
-    this.detail = detail;
+    this.code = code;
   }
 }

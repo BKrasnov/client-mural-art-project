@@ -14,8 +14,6 @@ body {
 
 a {
   text-decoration: none;
-}
-a:active {
   color: var(--primary-color);
 }
 
@@ -29,7 +27,13 @@ li {
 
 button {
   font: inherit;
+  border: none;
 }
+
+input, select, textarea {
+  border: none;
+}
+
 
 p {
   text-align: left;

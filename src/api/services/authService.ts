@@ -3,18 +3,17 @@ import { UserMapper } from "@core/mappers";
 
 import { UserService, FirebaseService } from "./index";
 
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
-
+/** @todo Remove the Firebase service and change it to its own API  */
 export namespace AuthService {
   /**
    * Registers an account.
    * @param registrationData Data required for registration.
    */
   export async function register(registrationData: Registration): Promise<User | null> {
-    const { email, password } = registrationData;
+    const { email, password, nickname } = registrationData;
     try {
-      const userCredential = await createUserWithEmailAndPassword(FirebaseService.auth, email, password);
-      const user = UserMapper.fromUserDto(userCredential.user);
+      const userCredential = await FirebaseService.createUser(email, password);
+      const user = UserMapper.fromUserDto(userCredential.user, nickname);
       await UserService.addUser(user);
       return user;
     } catch (error) {
@@ -29,25 +28,16 @@ export namespace AuthService {
   export async function login(loginData: Login): Promise<User | null> {
     const { email, password } = loginData;
     try {
-      const userCredential = await signInWithEmailAndPassword(FirebaseService.auth, email, password);
-      // const accessToken = await userCredential.user.getIdToken();
+      const userCredential = await FirebaseService.loginUser(email, password);
       const user = await UserService.getUser(userCredential.user.uid);
-      // const token = new Token({
-      //   access: accessToken,
-      //   refresh: userCredential.user.refreshToken,
-      // });
-
-      // await TokenService.save(token);
       return user;
     } catch (error) {
       throw error;
     }
   }
 
-  /**
-   * Logout a user.
-   */
+  /** Logout a user. */
   export async function logout(): Promise<void> {
-    await signOut(FirebaseService.auth);
+    await FirebaseService.logoutUser();
   }
 }

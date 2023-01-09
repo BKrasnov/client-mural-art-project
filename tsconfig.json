@@ -25,6 +25,7 @@
       "@components/*": ["src/components/*"],
       "@core/*": ["src/core/*"],
       "@static/*": ["src/static/*"],
+      "@ui/*": ["src/components/UI/*"],
     },
   },
   // ...

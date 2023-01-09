@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { AuthService, UserService } from "@api/services";
 
-import { Login, Registration } from "@core/models";
+import { Login, Profile, Registration } from "@core/models";
 
 export const authLogin = createAsyncThunk("auth/login", async (loginData: Login, thunkApi) => {
   try {
@@ -25,6 +25,14 @@ export const authLogout = createAsyncThunk("auth/logout", async () => {
     return await AuthService.logout();
   } catch (error: unknown) {
     throw error;
+  }
+});
+
+export const authProfile = createAsyncThunk("auth/updateProfile", async (profile: Profile, thunkApi) => {
+  try {
+    return await UserService.updateUser(profile);
+  } catch (error: unknown) {
+    return thunkApi.rejectWithValue(error);
   }
 });
 

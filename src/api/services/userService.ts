@@ -1,9 +1,10 @@
 import { onAuthStateChanged } from "firebase/auth";
-import { addDoc, getDocs, limit, query, where } from "firebase/firestore/lite";
+import { addDoc, doc, getDocs, limit, query, updateDoc, where } from "firebase/firestore/lite";
 
 import { FirebaseService } from "./firebaseService";
 
-import { User } from "@core/models";
+import { Profile, User } from "@core/models";
+import { UserMapper } from "@core/mappers";
 
 export namespace UserService {
   const USER_NAME_COLLECTION = "users";
@@ -17,7 +18,8 @@ export namespace UserService {
    */
   export async function addUser(user: User): Promise<void> {
     try {
-      await addDoc(userCollectionRef, user);
+      const doc = await addDoc(userCollectionRef, user);
+      updateDoc(doc, { docId: doc.id });
     } catch (error) {
       console.error("Error adding document: ", error);
     }
@@ -34,6 +36,22 @@ export namespace UserService {
       throw new Error(`User with id ${id} doesn't exist`);
     }
     return userSnapshot.docs[0].data();
+  }
+
+  /**
+   * Updating user in firebase.
+   * @param profile The profile object to be updated.
+   */
+  export async function updateUser(profile: Profile): Promise<User> {
+    const currentUser = await getUserFromCache();
+    if (currentUser === null) {
+      throw new Error("User not found");
+    }
+    const updatedUser = UserMapper.fromUserToProfile(currentUser, profile);
+    const docRef = doc(userCollectionRef, updatedUser.docId);
+    await updateDoc(docRef, updatedUser);
+
+    return updatedUser;
   }
 
   /** Function which tries to get a user from cache. */

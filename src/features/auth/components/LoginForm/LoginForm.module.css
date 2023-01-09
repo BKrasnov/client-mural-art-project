@@ -1,22 +1,5 @@
 .loginForm {
-  padding: 10px;
-  max-width: 450px;
-  margin: 0 auto;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
-}
-
-.loginForm__input {
-  border: none;
-  border-bottom: 2px solid #d1d1d4;
-  padding: 10px;
-  margin-bottom: 10px;
-  transition: 0.2s;
-}
-
-.loginForm__input:active,
-.loginForm__input:focus,
-.loginForm__input:hover {
-  outline: none;
-  border-bottom-color: #6a679e;
 }

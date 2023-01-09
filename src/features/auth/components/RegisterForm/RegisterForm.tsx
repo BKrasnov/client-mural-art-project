@@ -1,68 +1,72 @@
-import { memo, FC, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { memo, FC, useCallback } from "react";
+import { Link } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "src/store";
 import { authRegister } from "src/store/auth/dispatchers";
-import { selectIsAuthLoading, selectIsAuthSubmitted, selectRegisterError } from "src/store/auth/selectors";
+import { selectIsAuth, selectRegisterError } from "src/store/auth/selectors";
 
 import { initialFormValues, RegisterSchema, RegistrationFormValue } from "./formSettings";
-import { Field, FormikProvider, useFormik } from "formik";
+import { FormikProvider, Form, useFormik } from "formik";
 
 import { FormHelperText } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
+import { UiButton } from "@components/UI";
+import { FormikControl } from "@components/FormikControl";
+
+import useSubmitForm from "@core/hooks/useSubmitForm";
 
 import styles from "./RegistrationForm.module.css";
 
-const RegisterFormComponent: FC = () => {
+const URL_AUTH_PROFILE = "/auth/profile";
+
+const RegistrationFormComponent: FC = () => {
   const dispatch = useAppDispatch();
 
-  const isLoading = useAppSelector(selectIsAuthLoading);
-  const registerError = useAppSelector(selectRegisterError);
-  const isFormSubmitted = useAppSelector(selectIsAuthSubmitted);
+  const registrationError = useAppSelector(selectRegisterError);
+  const isAuthSubmitted = useAppSelector(selectIsAuth);
 
-  const navigate = useNavigate();
-  
   /**
    * Handles form submit.
-   * @param registerData Login data.
+   * @param registerData Registration data.
    */
-  const handleSubmitUserLogin = async (registerData: RegistrationFormValue) => {
-    await dispatch(authRegister(registerData));
-    formik.setSubmitting(false);
-  };
+  const handleSubmitForm = useCallback(
+    async (registerData: RegistrationFormValue) => {
+      await dispatch(authRegister(registerData));
+      formik.setSubmitting(false);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [dispatch]
+  );
 
   const formik = useFormik({
     initialValues: initialFormValues,
     validationSchema: RegisterSchema,
-    onSubmit: handleSubmitUserLogin,
+    onSubmit: handleSubmitForm,
   });
-
-  useEffect(() => {
-    if (isFormSubmitted) {
-      navigate('/personal-area/profile');
-    }
-  }, [isFormSubmitted, navigate]);
+  
+  useSubmitForm(isAuthSubmitted, URL_AUTH_PROFILE);
 
   return (
     <>
-      <div className={styles.wrapper}>
-        <h2>Регистрация пользователя</h2>
-        <FormikProvider value={formik}>
-          <form onSubmit={formik.handleSubmit} className={styles.registerForm}>
-            <Field className={styles.registerForm__input} name="email" placeholder="Почта" label="Email" type="email" required />
-            <Field className={styles.registerForm__input} name="password" placeholder="Пароль" label="Password" type="password" required />
-            <FormHelperText error>{registerError}</FormHelperText>
-            <button type="submit">
-              Регистрация
-            </button>
-          </form>
-        </FormikProvider>
+      <h2>
+        <span>User registration</span>
+      </h2>
+      <FormikProvider value={formik}>
+        <Form className={styles.registerForm}>
+          <FormikControl control="input" name="email" type="email" placeholder="Email" />
+          <FormikControl control="input" name="nickname" type="text" placeholder="Nickname" />
+          <FormikControl control="input" name="password" type="password" placeholder="Password" />
+          <FormikControl control="input" name="confirmPassword" type="password" placeholder="Confirm password" />
+          <FormHelperText error>{registrationError}</FormHelperText>
+          <UiButton>Register</UiButton>
+        </Form>
+      </FormikProvider>
+      <div>
         <span>
-          Есть аккаунт? <Link to="/auth/login"> Войти</Link>
+          Already have an account? <Link to="/auth/login">Log In</Link>
         </span>
       </div>
     </>
   );
 };
 
-export const RegistrarionForm = memo(RegisterFormComponent);
+export const RegistrarionForm = memo(RegistrationFormComponent);
