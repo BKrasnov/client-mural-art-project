@@ -23,9 +23,9 @@ export const selectIsAuthLoading = createSelector(
 );
 
 /** Selects auth submit state. */
-export const selectIsAuthSubmitted = createSelector(
-  (state: RootState) => state.auth.isSubmitted,
-  isSubmitted => isSubmitted,
+export const selectIsProfileSubmitted = createSelector(
+  (state: RootState) => state.auth.isSubmittedProfile,
+  isSubmittedProfile => isSubmittedProfile,
 );
 
 /** Selects auth error state. */

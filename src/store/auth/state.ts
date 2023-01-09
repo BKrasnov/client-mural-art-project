@@ -14,12 +14,12 @@ export interface AuthState {
   /** Currently signed in user. */
   readonly user: User | null;
 
-  /** Whether it has been submitted or not.. */
-  readonly isSubmitted: boolean;
+  /** The user has updated their profile. */
+  readonly isSubmittedProfile: boolean;
 }
 
 export const initialState: AuthState = {
   isLoading: false,
   user: null,
-  isSubmitted: false,
+  isSubmittedProfile: false,
 };

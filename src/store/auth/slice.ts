@@ -2,7 +2,7 @@ import { CaseReducer, createSlice } from "@reduxjs/toolkit";
 
 import { Login, Registration, AppError, FormError } from "@core/models";
 
-import { authLogin, authLogout, authRegister, getUserFromCache } from "./dispatchers";
+import { authLogin, authLogout, authRegister, getUserFromCache, authProfile } from "./dispatchers";
 import { AuthState, initialState } from "./state";
 
 const pendingReducer: CaseReducer<AuthState> = state => {
@@ -12,7 +12,6 @@ const pendingReducer: CaseReducer<AuthState> = state => {
 const fulfilledAuthReducer: CaseReducer<AuthState> = (state, action) => {
   state.user = action.payload;
   state.isLoading = false;
-  state.isSubmitted = true;
 };
 
 const authSlice = createSlice({
@@ -35,11 +34,23 @@ const authSlice = createSlice({
         state.isLoading = false;
       })
 
+      .addCase(authProfile.pending, pendingReducer)
+      .addCase(authProfile.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoading = false;
+        state.isSubmittedProfile = true;
+      })
+      .addCase(authProfile.rejected, state => {
+        state.isLoading = false;
+      })
+
       .addCase(authLogout.pending, pendingReducer)
       .addCase(authLogout.fulfilled, state => {
         state.user = null;
         state.isLoading = false;
-        state.isSubmitted = false;
+        state.isSubmittedProfile = false;
+        state.loginError = undefined;
+        state.registerError = undefined;
       })
 
       .addCase(getUserFromCache.pending, pendingReducer)
