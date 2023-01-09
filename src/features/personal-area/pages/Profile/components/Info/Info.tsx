@@ -2,7 +2,6 @@ import { FC, memo } from "react";
 
 import { useAppSelector } from "src/store";
 import { selectUser } from "src/store/auth/selectors";
-import { selectUpdateUser } from "src/store/user/selectors";
 
 import logoVk from "src/static/logoVk.svg";
 import logoTg from "src/static/logoTg.svg";
@@ -23,7 +22,6 @@ const InfoComponent: FC = () => {
     avatar: "https://clck.ru/32sHcA",
   };
   const user = useAppSelector(selectUser);
-  const userUpdate = useAppSelector(selectUpdateUser);
 
   if (user === null) return null;
 
@@ -33,7 +31,7 @@ const InfoComponent: FC = () => {
       <div className={styles.profile__content}>
         <div className={styles.profile__names}>
           <div>
-            <span>{(user.firstName || userUpdate?.firstName) + " " + (user.lastName || userUpdate?.lastName)}</span>
+            <span>{user.firstName + " " + user.lastName}</span>
           </div>
           <div>
             <span>{user.nickName ?? "Ник отсутствует"}</span>

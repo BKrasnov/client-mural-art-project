@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "src/store";
 import { authRegister } from "src/store/auth/dispatchers";
-import { selectIsAuthSubmitted, selectRegisterError } from "src/store/auth/selectors";
+import { selectIsAuth, selectRegisterError } from "src/store/auth/selectors";
 
 import { initialFormValues, RegisterSchema, RegistrationFormValue } from "./formSettings";
 import { FormikProvider, Form, useFormik } from "formik";
@@ -22,7 +22,7 @@ const RegistrationFormComponent: FC = () => {
   const dispatch = useAppDispatch();
 
   const registrationError = useAppSelector(selectRegisterError);
-  const isFormSubmitted = useAppSelector(selectIsAuthSubmitted);
+  const isAuthSubmitted = useAppSelector(selectIsAuth);
 
   /**
    * Handles form submit.
@@ -42,8 +42,8 @@ const RegistrationFormComponent: FC = () => {
     validationSchema: RegisterSchema,
     onSubmit: handleSubmitForm,
   });
-
-  useSubmitForm(isFormSubmitted, URL_AUTH_PROFILE);
+  
+  useSubmitForm(isAuthSubmitted, URL_AUTH_PROFILE);
 
   return (
     <>
