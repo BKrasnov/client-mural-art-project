@@ -9,7 +9,7 @@ import { initialFormValues, RegisterSchema, RegistrationFormValue } from "./form
 import { FormikProvider, Form, useFormik } from "formik";
 
 import { FormHelperText } from "@mui/material";
-import { UiButton } from "@components/UI";
+import { UiSubmitButton } from "@components/UI";
 import { FormikControl } from "@components/FormikControl";
 
 import useSubmitForm from "@core/hooks/useSubmitForm";
@@ -57,7 +57,7 @@ const RegistrationFormComponent: FC = () => {
           <FormikControl control="input" name="password" type="password" placeholder="Password" />
           <FormikControl control="input" name="confirmPassword" type="password" placeholder="Confirm password" />
           <FormHelperText error>{registrationError}</FormHelperText>
-          <UiButton>Register</UiButton>
+          <UiSubmitButton classes={styles.registerForm__button}>Register</UiSubmitButton>
         </Form>
       </FormikProvider>
       <div>

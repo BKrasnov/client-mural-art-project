@@ -9,7 +9,7 @@ import useSubmitForm from "@core/hooks/useSubmitForm";
 import { initialFormValues, ProfileFormValue, ProfileEditSchema } from "./formSettings";
 import { FormikProvider, useFormik, Form } from "formik";
 
-import { UiButton } from "@components/UI";
+import { UiSubmitButton } from "@components/UI";
 import { FormikControl } from "@components/FormikControl";
 
 import { OptionsSelect } from "@core/models";
@@ -61,7 +61,7 @@ const ProfileFormComponent: FC = () => {
           <FormikControl control="input" name="lastName" type="text" placeholder="Last name" />
           <FormikControl control="input" name="phoneNumber" type="tel" placeholder="Phone number" />
           <FormikControl control="select" name="occupation" options={optionItems}/>
-          <UiButton>Continue</UiButton>
+          <UiSubmitButton classes={styles.profileForm__button}>Continue</UiSubmitButton>
         </Form>
       </FormikProvider>
     </>

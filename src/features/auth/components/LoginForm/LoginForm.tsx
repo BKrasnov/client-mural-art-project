@@ -9,7 +9,7 @@ import { initialFormValues, LoginSchema, LoginFormValue } from "./formSettings";
 import { FormikProvider, useFormik, Form } from "formik";
 
 import { FormHelperText } from "@mui/material";
-import { UiButton } from "@components/UI";
+import { UiSubmitButton } from "@components/UI";
 import { FormikControl } from "@components/FormikControl";
 
 import styles from "./LoginForm.module.css";
@@ -48,7 +48,7 @@ const LoginFormComponent: FC = () => {
           <FormikControl control="input" name="email" type="email" placeholder="Email" />
           <FormikControl control="input" name="password" type="password" placeholder="Password" />
           <FormHelperText error>{loginError}</FormHelperText>
-          <UiButton>Log in</UiButton>
+          <UiSubmitButton classes={styles.loginForm__button}>Log in</UiSubmitButton>
         </Form>
       </FormikProvider>
       <div>
