@@ -9,7 +9,7 @@ export const Input: FC<FieldHookConfig<string>> = ({ ...field }) => {
       name={field.name}
       placeholder={field.placeholder}
       type={field.type}
-      required
+      required={field.required || false}
     />
   );
 };

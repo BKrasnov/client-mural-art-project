@@ -5,7 +5,7 @@ import { Field, FieldHookConfig } from "formik";
 import { OptionsSelect } from "@core/models";
 
 interface SelectProps {
-  options?: OptionsSelect[];
+  readonly options?: OptionsSelect[];
 }
 
 export const Select: FC<FieldHookConfig<string> & SelectProps> = ({ options, ...field }) => {
@@ -15,7 +15,7 @@ export const Select: FC<FieldHookConfig<string> & SelectProps> = ({ options, ...
       className={field.className}
       name={field.name}
       type={field.type}
-      required
+      required={field.required || false}
     >
       {options?.map(option => (
         <option key={option.key} value={option.value}>
