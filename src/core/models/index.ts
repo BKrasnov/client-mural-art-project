@@ -10,3 +10,4 @@ export * from "./errors/form-error";
 
 export * from "./murals/mural";
 export * from "./murals/mural-filters";
+export * from "./murals/pagination";
