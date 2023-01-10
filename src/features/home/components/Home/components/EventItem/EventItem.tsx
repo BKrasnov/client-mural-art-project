@@ -3,11 +3,11 @@ import { FC, memo } from "react";
 import styles from "./EventItem.module.css";
 
 interface IEventItemProps {
-  title: string;
-  description: string;
-  link: string | undefined;
-  location: string;
-  date: string;
+  readonly title: string;
+  readonly description: string;
+  readonly link: string | undefined;
+  readonly location: string;
+  readonly date: string;
 }
 
 const EventItemComponent: FC<IEventItemProps> = IEventItemProps => {

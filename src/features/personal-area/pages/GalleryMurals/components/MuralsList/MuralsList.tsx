@@ -4,9 +4,7 @@ import { useAppDispatch, useAppSelector } from "src/store";
 import { getMurals } from "src/store/murals/dispatchers";
 import { selectMurals, selectMuralsListFilters, selectMuralsLoading } from "src/store/murals/selectors";
 
-import { Loader } from "@components/Loader";
-
-import { Filters } from "../Filters/Filters";
+import { Filters } from "../Filters";
 import { MuralListItem } from "../MuralListItem";
 
 import styles from "./MuralsList.module.css";
@@ -19,12 +17,12 @@ const MuralsListComponent: FC = () => {
   const filters = useAppSelector(selectMuralsListFilters);
 
   useEffect(() => {
-    dispatch(getMurals({ filters }));
+    dispatch(getMurals(filters));
   }, [dispatch, filters]);
 
   return (
     <>
-      <Filters/>
+      <Filters />
       <section className={styles.muralList}>
         {isLoading ? (
           <div>Загрузка</div>

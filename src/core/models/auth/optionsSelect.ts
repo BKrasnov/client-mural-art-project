@@ -1,5 +1,5 @@
 /** Options for the select tag. */
 export interface OptionsSelect {
-  key: string;
-  value: string;
+  readonly key: string;
+  readonly value: string;
 }

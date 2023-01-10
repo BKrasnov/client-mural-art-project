@@ -3,10 +3,10 @@ import { FC, memo } from "react";
 import styles from "./EventCard.module.css";
 
 interface IEventCard {
-  id: string;
-  title: string;
-  date: string;
-  link: string;
+  readonly id: string;
+  readonly title: string;
+  readonly date: string;
+  readonly link: string;
 }
 
 const EventCardComponent: FC<IEventCard> = IEventCard => {
