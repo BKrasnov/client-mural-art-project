@@ -4,16 +4,16 @@ import { FirebaseService } from "./firebaseService";
 
 import { MuralDto } from "@core/dtos";
 import { MuralMapper } from "@core/mappers";
-import { Mural, MuralsFetchingOptions } from "@core/models";
+import { Mural, MuralFilters } from "@core/models";
 
 /**
  * Function for getting query constraints for films fetching based on options provided.
  * @param options - Options to builds constraints.
  */
-function getMuralsQueryConstraints(options: MuralsFetchingOptions): QueryConstraint[] {
+function getMuralsQueryConstraints(options: MuralFilters): QueryConstraint[] {
   const constraints: QueryConstraint[] = [];
 
-  const { searchValue } = options.filters;
+  const { searchValue } = options;
 
   if (searchValue.trim() !== "") {
     /* Adding searching constraint.
@@ -38,7 +38,7 @@ export namespace MuralService {
    * Getting all murals from firebase.
    * @param options Options for fetching murals.
    */
-  export async function getMurals(options: MuralsFetchingOptions): Promise<Mural[]> {
+  export async function getMurals(options: MuralFilters): Promise<Mural[]> {
     const queryMurals = query(muralCollectionRef, ...getMuralsQueryConstraints(options));
     const muralsSnapshot = await getDocs(queryMurals);
     const murals: Mural[] = FirebaseService.mapQuerySnapshotToArray<MuralDto, Mural>(muralsSnapshot, MuralMapper.fromDto);
