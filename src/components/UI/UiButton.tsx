@@ -1,14 +1,18 @@
 import { FC } from "react";
 
+import cn from "classnames"
+
 import styles from "./UiButton.module.css";
 
-interface UiButtonProps {
+interface UiSubmitButtonProps {
+
+  classes?: string;
   children: React.ReactNode;
 }
 
-export const UiButton: FC<UiButtonProps> = ({ children }) => {
+export const UiSubmitButton: FC<UiSubmitButtonProps> = ({ children, classes }) => {
   return (
-    <button type="submit" className={styles.uiButton}>
+    <button type="submit" className={cn(classes,  styles.uiButton)}>
       {children}
     </button>
   );
