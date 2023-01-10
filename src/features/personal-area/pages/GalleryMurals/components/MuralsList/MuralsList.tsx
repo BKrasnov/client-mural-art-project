@@ -17,7 +17,7 @@ const MuralsListComponent: FC = () => {
   const filters = useAppSelector(selectMuralsListFilters);
 
   useEffect(() => {
-    dispatch(getMurals(filters));
+    dispatch(getMurals({ filters }));
   }, [dispatch, filters]);
 
   if (!murals.length) {
