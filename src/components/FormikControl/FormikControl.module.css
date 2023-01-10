@@ -30,3 +30,17 @@
   margin-top: 3px;
   transition: 0.2s;
 }
+
+.fieldWrapper__search {
+  max-width: 800px;
+  margin-right: 50px;
+  border-radius: 10px;
+  border: 2px solid #6b6b6b;
+  padding: 10px 20px;
+  transition: 0.3s;
+}
+
+.fieldWrapper__search:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
