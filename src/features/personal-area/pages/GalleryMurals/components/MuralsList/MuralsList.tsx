@@ -4,8 +4,8 @@ import { useAppDispatch, useAppSelector } from "src/store";
 import { getMurals } from "src/store/murals/dispatchers";
 import { selectMurals, selectMuralsListFilters, selectMuralsLoading } from "src/store/murals/selectors";
 
-import { Filters } from "../Filters";
 import { MuralListItem } from "../MuralListItem";
+import Pagination from '@mui/material/Pagination';
 
 import styles from "./MuralsList.module.css";
 
@@ -20,18 +20,24 @@ const MuralsListComponent: FC = () => {
     dispatch(getMurals(filters));
   }, [dispatch, filters]);
 
+  if (!murals.length) {
+    return <div>Нет данных</div>;
+  }
+
   return (
     <>
-      <Filters />
-      <section className={styles.muralList}>
-        {isLoading ? (
-          <div>Загрузка</div>
-        ) : (
-          murals.map(mural => {
-            return <MuralListItem key={mural.id} mural={mural} />;
-          })
-        )}
-      </section>
+      {isLoading ? (
+        <div>Загрузка</div>
+      ) : (
+        <>
+          <section className={styles.muralList}>
+            {murals.map(mural => {
+              return <MuralListItem key={mural.id} mural={mural} />;
+            })}
+          </section>
+          <Pagination count={10} />
+        </>
+      )}
     </>
   );
 };
