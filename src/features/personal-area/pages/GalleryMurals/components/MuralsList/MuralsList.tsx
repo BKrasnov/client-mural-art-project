@@ -1,13 +1,17 @@
 import { FC, memo, useEffect } from "react";
 
 import { useAppDispatch, useAppSelector } from "src/store";
-import { getMurals } from "src/store/murals/dispatchers";
+import { getNextPageOfMurals } from "src/store/murals/dispatchers";
 import { selectMurals, selectMuralsListFilters, selectMuralsLoading } from "src/store/murals/selectors";
 
 import { MuralListItem } from "../MuralListItem";
-import Pagination from '@mui/material/Pagination';
+import Pagination from "@mui/material/Pagination";
 
 import styles from "./MuralsList.module.css";
+
+const COUNT_MURALS = 10;
+const COUNT_MURALS_PAGE = 2;
+const COUNT_PAGE = COUNT_MURALS / COUNT_MURALS_PAGE
 
 const MuralsListComponent: FC = () => {
   const dispatch = useAppDispatch();
@@ -17,7 +21,7 @@ const MuralsListComponent: FC = () => {
   const filters = useAppSelector(selectMuralsListFilters);
 
   useEffect(() => {
-    dispatch(getMurals({ filters }));
+    dispatch(getNextPageOfMurals({ countOfMurals: COUNT_MURALS_PAGE, lastVisibleMural: null, filters }));
   }, [dispatch, filters]);
 
   if (!murals.length) {
@@ -35,7 +39,7 @@ const MuralsListComponent: FC = () => {
               return <MuralListItem key={mural.id} mural={mural} />;
             })}
           </section>
-          <Pagination count={10} />
+          <Pagination count={COUNT_PAGE} />
         </>
       )}
     </>

@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { MuralFilters } from "@core/models/murals";
 
-import { getMurals } from "./dispatchers";
+import { getNextPageOfMurals } from "./dispatchers";
 import { initialState } from "./state";
 
 const muralsSlice = createSlice({
@@ -15,14 +15,14 @@ const muralsSlice = createSlice({
   },
   extraReducers: builder =>
     builder
-      .addCase(getMurals.pending, state => {
+      .addCase(getNextPageOfMurals.pending, state => {
         state.isLoading = true;
       })
-      .addCase(getMurals.fulfilled, (state, action) => {
+      .addCase(getNextPageOfMurals.fulfilled, (state, action) => {
         state.isLoading = false;
         state.murals = action.payload;
       })
-      .addCase(getMurals.rejected, (state, action) => {
+      .addCase(getNextPageOfMurals.rejected, (state, action) => {
         state.isLoading = false;
         state.muralsListError = action.error.message;
       }),

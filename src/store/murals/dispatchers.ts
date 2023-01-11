@@ -1,13 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { MuralService } from "@api/services/muralService";
-import { MuralsFetchingOptions } from "@core/models";
+import { MuralsQueryOptions } from "@core/models";
 
 /**
  * Getting all murals.
  * @param options Options for fetching murals.
  */
-export const getMurals = createAsyncThunk("murals/murals", async (options: MuralsFetchingOptions, thunkApi) => {
+export const getNextPageOfMurals = createAsyncThunk("murals/murals", async (options: MuralsQueryOptions, thunkApi) => {
   try {
     return await MuralService.getMurals(options);
   } catch (error: unknown) {
