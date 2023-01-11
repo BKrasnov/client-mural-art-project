@@ -5,14 +5,8 @@ A project that allows graffiti artists to create their own common environment fo
 ## Stack
 ``ReactJS, Typescript, redux-toolkit, CSS modules, formik-yup, firebase``
 
-## Team
-Bogdan Krasnov - Developer, project manager  
-Elizabeth Bodrova - UI/UX Designer  
-Polina Puchkova - UI/UX Designer  
-Nadia Bazhenova - Developerь, project manager  
-
 ## Running the app
-Attention, the project will not work, because there is no env file.  
+Attention, the project will not work, because there is no env file. There may be errors or bugs, since this is not a production.  
 It's better to look at this link: https://mural-art-project-l768.vercel.app
 
 ## Figma
