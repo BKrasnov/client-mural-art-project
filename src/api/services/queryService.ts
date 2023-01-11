@@ -19,18 +19,18 @@ export namespace QueryService {
     const { countOfMurals } = options;
     const { searchValue } = options.filters;
 
+    constraints.push(limit(countOfMurals));
+    
     if (searchValue.trim() !== "") {
       /* Adding searching constraint.
          The \uf8ff character used in the query is a very high code point in the Unicode range.
          Because it is after most regular characters in Unicode,
          the query matches all values that start with searching value. */
       const veryHighCodePoint = "\uf8ff";
-      constraints.push(limit(countOfMurals));
       constraints.push(orderBy("title"));
       constraints.push(startAt(searchValue));
       constraints.push(endAt(`${searchValue}${veryHighCodePoint}`));
     }
-
     return constraints;
   }
 
