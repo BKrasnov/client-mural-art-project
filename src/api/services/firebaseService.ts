@@ -6,9 +6,20 @@ import {
   signOut,
   UserCredential,
 } from "firebase/auth";
-import { collection, CollectionReference, DocumentData, getFirestore, QuerySnapshot } from "firebase/firestore/lite";
+import {
+  collection,
+  CollectionReference,
+  DocumentData,
+  getDocs,
+  getFirestore,
+  query,
+  QueryConstraint,
+  QuerySnapshot,
+} from "firebase/firestore/lite";
 
 import { firebaseConfig } from "@api/config";
+
+export type FirestoreCollectionName = "users" | "murals";
 
 export namespace FirebaseService {
   /**  Initialize Firebase. */
@@ -28,20 +39,25 @@ export namespace FirebaseService {
     return createUserWithEmailAndPassword(auth, email, password);
   }
 
-  /** Login a user with email and password. */
+  /** Login a user with email and password.
+   * @param email Email user.
+   * @param password Password user.
+   */
   export async function loginUser(email: string, password: string): Promise<UserCredential> {
-    return signInWithEmailAndPassword(FirebaseService.auth, email, password);
+    return signInWithEmailAndPassword(auth, email, password);
   }
 
   export async function logoutUser(): Promise<void> {
-    signOut(FirebaseService.auth);
+    signOut(auth);
   }
 
   /**
    * Getting typed collectionReference.
    * @param collectionName Collection name.
    */
-  export function getCollectionReference<T = DocumentData>(collectionName: string): CollectionReference<T> {
+  export function getCollectionReference<T = DocumentData>(
+    collectionName: FirestoreCollectionName
+  ): CollectionReference<T> {
     return collection(database, collectionName) as CollectionReference<T>;
   }
 
@@ -56,5 +72,25 @@ export namespace FirebaseService {
     fromDtoMapper: (dto: TDto) => TData
   ): TData[] {
     return snapshot.docs.map(dto => fromDtoMapper(dto.data()));
+  }
+
+  /**
+   * Fetch entities from the firebase collection.
+   * @param collectionName Collection name.
+   * @param constraints Query constraints.
+   * @param fromDtoMapper Mapper method which perform mapping.
+   */
+  export async function fetchEntities<TDto, TData>(
+    collectionName: FirestoreCollectionName,
+    constraints: readonly QueryConstraint[] = [],
+    fromDtoMapper: (dto: TDto) => TData
+  ): Promise<TData[]> {
+    try {
+      const querySnapshot = await getDocs<TDto>(query(getCollectionReference(collectionName), ...constraints));
+      const data = mapQuerySnapshotToArray<TDto, TData>(querySnapshot, fromDtoMapper);
+      return data;
+    } catch (error) {
+      throw error;
+    }
   }
 }
